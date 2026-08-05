@@ -12,21 +12,21 @@ function t_onFuncLoad(funcName,okFunc,time) {if(typeof window[funcName]==='funct
 document.addEventListener('DOMContentLoaded',t_setvisRecs);}})();</script>
 <style>
 /* Сетка текстовых блоков = колонка первого экрана (960px, по центру).
-   Блоки с медиа не трогаем, чтобы не ломать полноширинные изображения. */
+   Полноширинные медиа живут в других контейнерах, их это не затрагивает. */
 @media (min-width: 961px) {
-  .t-rec .t-container:not(:has(img)):not(:has(video)):not(:has(iframe)) {
+  .t-rec .t-container {
     max-width: 960px; margin-left: auto; margin-right: auto;
     padding-left: 0; padding-right: 0;
   }
 }
 @media (max-width: 960px) {
-  .t-rec .t-container:not(:has(img)):not(:has(video)):not(:has(iframe)) {
+  .t-rec .t-container {
     max-width: none; margin-left: 40px; margin-right: 40px;
     padding-left: 0; padding-right: 0;
   }
 }
 @media (max-width: 640px) {
-  .t-rec .t-container:not(:has(img)):not(:has(video)):not(:has(iframe)) {
+  .t-rec .t-container {
     margin-left: 20px; margin-right: 20px;
   }
 }
