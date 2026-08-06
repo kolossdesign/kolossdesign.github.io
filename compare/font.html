@@ -4,59 +4,64 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Первый экран — шрифтом</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
 <style>
-/* Первый экран текстом вместо SVG.
-   Все величины — доли ширины артборда (cqw), поэтому блок тянется ровно как картинка.
-   Десктоп: артборд 830×442, фото слева. Мобильный: 830×724, фото сверху. */
-.swHero { position:relative; width:100%; container-type:inline-size; font-family:Inter,-apple-system,sans-serif; }
-.swHero--d { aspect-ratio:830/442; }
-.swHero--m { aspect-ratio:830/724; }
-.swHero__ava { position:absolute; border-radius:50%; object-fit:cover; display:block; }
-.swHero__head { position:absolute; margin:0; font-weight:700; letter-spacing:0; color:#000;
-                white-space:pre-line; }
-.swHero__type { position:absolute; margin:0; font-weight:800; letter-spacing:0; white-space:pre-line;
-                background-image:linear-gradient(51.7deg,#9828BF 0%,#F59D0F 100%);
-                background-repeat:no-repeat;
-                -webkit-background-clip:text; background-clip:text; color:transparent; }
-
-/* Десктопная раскладка */
-.swHero--d .swHero__ava  { left:0; top:0; width:15.181cqw; height:15.181cqw; }
-.swHero--d .swHero__head { left:20.241cqw; top:-0.494cqw; font-size:6.548cqw; line-height:0.885; }
-.swHero--d .swHero__type { left:-0.723cqw; top:18.350cqw; font-size:20.185cqw; line-height:0.895;
-                           background-size:100cqw 53.253cqw; background-position:0 -18.350cqw; }
-
-/* Мобильная раскладка: фото уходит наверх */
-.swHero--m .swHero__ava  { left:0; top:0; width:19.639cqw; height:19.639cqw; }
-.swHero--m .swHero__head { left:0; top:24.340cqw; font-size:9.019cqw; line-height:0.886; }
-.swHero--m .swHero__type { left:-0.723cqw; top:52.325cqw; font-size:20.185cqw; line-height:0.895;
-                           background-size:100cqw 87.229cqw; background-position:0 -52.325cqw; }
-</style>
-<style>
-  *{box-sizing:border-box} body{margin:0;background:#fafafa}
-  .page{padding:40px 80px}
-  .hold{width:100%;max-width:830px}
-  .swHero--m{display:none}
-  @media (max-width:980px){ .page{padding:24px 40px} .swHero--d{display:none} .swHero--m{display:block} }
-  @media (max-width:640px){ .page{padding:16px 20px} }
+  :root { --ink:#000; --g1:#9828BF; --g2:#F59D0F; }
+  * { box-sizing:border-box }
+  body { margin:0; background:#fafafa; font-family:Inter,-apple-system,sans-serif; }
+  .page { padding:40px 80px; }
+  /* Артборд повторяет пропорции исходного SVG (830×442).
+     Все размеры — в cqw, поэтому блок масштабируется ровно как картинка. */
+  .art {
+    position:relative;
+    width:100%;
+    max-width:830px;
+    aspect-ratio:830/442;
+    container-type:inline-size;
+  }
+  .ava {
+    position:absolute; left:0; top:0;
+    width:15.181cqw; height:15.181cqw;   /* 126/830 */
+    border-radius:50%; object-fit:cover; display:block;
+  }
+  .head {
+    position:absolute; left:20.241cqw; top:-0.518cqw;   /* 168/830, минус полулидинг */
+    margin:0;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight:700;
+    font-size:6.024cqw;        /* 50/830 */
+    line-height:0.920;         /* 46/50 */
+    letter-spacing:0;
+    color:var(--ink);
+    white-space:pre-line;
+  }
+  .letters {
+    position:absolute; left:-0.723cqw; top:18.590cqw;  /* -6/830; базовая линия 290 минус полулидинг */
+    margin:0;
+    font-weight:900;
+    font-size:20.120cqw;       /* 167/830 */
+    line-height:0.898;         /* 150/167 */
+    letter-spacing:0.006em;    /* 1/167 */
+    white-space:pre-line;
+    background-image:linear-gradient(51.7deg, var(--g1) 0%, var(--g2) 100%);
+    background-size:100cqw 53.253cqw;   /* градиент натянут на весь артборд, как в SVG */
+    background-position:0 -18.590cqw;
+    background-repeat:no-repeat;
+    -webkit-background-clip:text; background-clip:text;
+    color:transparent;
+  }
+  @media (max-width:960px){ .page{ padding:24px 40px } }
+  @media (max-width:640px){ .page{ padding:16px 20px } }
 </style></head>
 <body>
-<div class="page"><div class="hold">
-  <div class="swHero swHero--d">
-    <img class="swHero__ava" src="avatar.png" alt="Владимир Селиверстов">
-    <h1 class="swHero__head">Создаю дизайн,
+<div class="page">
+  <div class="art">
+    <img class="ava" src="avatar.png" alt="Владимир">
+    <h1 class="head">Создаю дизайн,
 который помогает
 бизнесу расти</h1>
-    <p class="swHero__type">PRODUCT
+    <p class="letters">PRODUCT
 DESIGN</p>
   </div>
-  <div class="swHero swHero--m">
-    <img class="swHero__ava" src="avatar.png" alt="Владимир Селиверстов">
-    <h1 class="swHero__head">Создаю дизайн,
-который помогает
-бизнесу расти</h1>
-    <p class="swHero__type">PRODUCT
-DESIGN</p>
-  </div>
-</div></div>
+</div>
 </body></html>
