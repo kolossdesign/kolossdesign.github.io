@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Первый экран: картинка против шрифта</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;background:#f2f3f5;font-family:Inter,-apple-system,sans-serif;color:#141414}
+  header{padding:24px 28px 8px;max-width:1400px;margin:0 auto}
+  h1{font-size:22px;margin:0 0 6px}
+  p.sub{margin:0;color:#6b7280;font-size:15px;line-height:1.45}
+  .ctl{display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+       padding:16px 28px;max-width:1400px;margin:0 auto;position:sticky;top:0;
+       background:#f2f3f5;z-index:5;border-bottom:1px solid #e2e4e8}
+  .ctl label{font-size:14px;color:#6b7280}
+  input[type=range]{width:340px}
+  .val{font:600 14px/1 Inter;min-width:78px}
+  .btns button{border:1px solid #d3d6db;background:#fff;border-radius:8px;padding:7px 12px;
+               font:14px Inter;cursor:pointer;margin-right:6px}
+  .btns button:hover{background:#f7f8fa}
+  main{padding:20px 28px 60px;max-width:1400px;margin:0 auto;display:grid;gap:22px}
+  .card{background:#fff;border-radius:14px;padding:14px 14px 18px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+  .card h2{font-size:15px;margin:0 0 4px}
+  .card .meta{font-size:13px;color:#6b7280;margin:0 0 12px}
+  iframe{border:1px solid #e2e4e8;border-radius:10px;display:block;background:#fafafa;
+         width:100%;height:520px}
+  .frame-wrap{overflow:auto}
+</style></head>
+<body>
+<header>
+  <h1>Первый экран: картинка против шрифта</h1>
+  <p class="sub">Сверху — как сейчас, одним SVG. Снизу — то же самое живым текстом.
+  Двигай ползунок: обе версии масштабируются одинаково, но текстовая остаётся текстом.</p>
+</header>
+
+<div class="ctl">
+  <label>Ширина окна</label>
+  <input type="range" id="w" min="320" max="1400" value="1200">
+  <span class="val" id="v">1200px</span>
+  <span class="btns">
+    <button data-w="1440">1440</button>
+    <button data-w="1200">1200</button>
+    <button data-w="960">960</button>
+    <button data-w="768">768</button>
+    <button data-w="480">480</button>
+    <button data-w="375">375</button>
+  </span>
+</div>
+
+<main>
+  <div class="card">
+    <h2>Картинка (как сейчас)</h2>
+    <p class="meta">Union.svg — 242 КБ. Текст не выделяется, не ищется, не читается скринридером и не переносится по строкам.</p>
+    <div class="frame-wrap"><iframe id="f1" src="image.html"></iframe></div>
+  </div>
+  <div class="card">
+    <h2>Шрифтом</h2>
+    <p class="meta">Inter 900 для надписи, Helvetica/Arial для заголовка, градиент через background-clip. Разметка — 2 КБ плюс фото.</p>
+    <div class="frame-wrap"><iframe id="f2" src="font.html"></iframe></div>
+  </div>
+</main>
+
+<script>
+  const w=document.getElementById('w'), v=document.getElementById('v');
+  const set=n=>{ n=Math.max(320,Math.min(1400,+n));
+    w.value=n; v.textContent=n+'px';
+    for(const id of ['f1','f2']) document.getElementById(id).style.width=n+'px';
+  };
+  w.addEventListener('input',e=>set(e.target.value));
+  document.querySelectorAll('.btns button').forEach(b=>b.onclick=()=>set(b.dataset.w));
+  set(1200);
+</script>
+</body></html>
