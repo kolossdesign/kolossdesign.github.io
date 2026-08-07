@@ -20,7 +20,7 @@ body{
 @media (max-width:960px){ .wrap{padding:0 40px} }
 @media (max-width:640px){ .wrap{padding:0 20px} body{font-size:18px} }
 
-.back{display:inline-flex;align-items:center;gap:10px;margin:28px 0 0;
+.back{display:inline-flex;align-items:center;gap:10px;margin:40px 0 0;
   font-size:18px;color:var(--ink);text-decoration:none}
 .back svg{display:block}
 .back:hover{opacity:.6}
@@ -56,19 +56,35 @@ li{margin:0 0 10px}
 @media (max-width:640px){ .metrics{gap:28px} .metrics div span{font-size:38px} }
 
 /* Картинки кейса — две колонки, как на странице SW */
-.shots{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:32px 0 8px}
-.shots.one{grid-template-columns:1fr}
+/* Картинки живут в своей сетке: во всю ширину экрана,
+   отступ от краев 80px на десктопе и 16px на мобильном.
+   Число колонок задается классом .cols-1 … .cols-4 */
+.shots{display:grid;gap:24px;margin:32px 0 8px;
+  grid-template-columns:repeat(2,1fr);
+  width:100vw;position:relative;left:50%;transform:translateX(-50vw);
+  padding:0 80px;box-sizing:border-box}
+.shots.cols-1{grid-template-columns:1fr}
+.shots.cols-2{grid-template-columns:repeat(2,1fr)}
+.shots.cols-3{grid-template-columns:repeat(3,1fr)}
+.shots.cols-4{grid-template-columns:repeat(4,1fr)}
 .shots img{width:100%;display:block;border-radius:12px;background:#eef0f3}
-@media (max-width:640px){ .shots{grid-template-columns:1fr;gap:16px} }
+@media (max-width:960px){ .shots{padding:0 40px;gap:16px} .shots.cols-3,.shots.cols-4{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:640px){ .shots{padding:0 16px;grid-template-columns:1fr!important;gap:16px} }
+.caption{margin-left:0}
 .caption{font-size:16px;color:var(--muted);margin:10px 0 0}
 
 .lesson{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px 32px;margin:56px 0}
 .lesson h3{margin-top:0}
 
-/* Места, куда нужно подставить фактуру. Заметны в вёрстке, легко найти поиском. */
+/* Места, куда нужно подставить фактуру. Заметны в верстке, легко найти поиском. */
 .todo{background:var(--todo-bg);border:1px dashed var(--todo-br);border-radius:10px;
   padding:14px 18px;font-size:17px;color:#7a5b00;margin:0 0 18px}
 .todo b{color:#5d4500}
 
-footer{margin:96px 0 64px;color:var(--muted);font-size:16px}
+/* Возврат ко всем кейсам внизу страницы */
+.allcases{border-top:1px solid var(--line);margin:96px 0 0;padding:40px 0 80px}
+.allcases a{display:inline-flex;align-items:center;gap:10px;font-size:20px;
+  color:var(--ink);text-decoration:none}
+.allcases a:hover{opacity:.6}
+footer{margin:0;color:var(--muted);font-size:16px}
 footer a{color:var(--accent)}
