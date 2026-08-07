@@ -1,0 +1,74 @@
+/* Стили страниц кейсов. Повторяют типографику существующих страниц sw / stenn:
+   Inter, колонка 960px по центру, фон #FBFBFB. */
+:root{
+  --ink:#000;
+  --muted:#6b7280;
+  --line:#e3e4e8;
+  --bg:#fbfbfb;
+  --accent:#0a84ff;
+  --todo-bg:#fff8e1;
+  --todo-br:#f0d089;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  font-size:20px;line-height:1.45;
+}
+.wrap{max-width:960px;margin:0 auto;padding:0 80px}
+@media (max-width:960px){ .wrap{padding:0 40px} }
+@media (max-width:640px){ .wrap{padding:0 20px} body{font-size:18px} }
+
+.back{display:inline-flex;align-items:center;gap:10px;margin:28px 0 0;
+  font-size:18px;color:var(--ink);text-decoration:none}
+.back svg{display:block}
+.back:hover{opacity:.6}
+
+h1{font-size:64px;line-height:1.06;font-weight:700;letter-spacing:-0.02em;margin:48px 0 28px}
+@media (max-width:960px){ h1{font-size:44px} }
+@media (max-width:640px){ h1{font-size:32px} }
+
+.role{font-size:20px;font-weight:700;margin:0 0 6px}
+.stages{font-size:20px;color:var(--ink);margin:0 0 40px}
+hr{border:0;border-top:1px solid var(--line);margin:40px 0}
+
+.intro{display:flex;gap:40px;align-items:flex-start;margin:0 0 56px}
+.intro .logo{font-size:34px;font-weight:700;letter-spacing:-0.01em;flex:0 0 240px}
+.intro p{margin:0;color:var(--muted)}
+@media (max-width:640px){ .intro{flex-direction:column;gap:12px} .intro .logo{flex:none} }
+
+h2{font-size:42px;line-height:1.15;font-weight:600;letter-spacing:-0.01em;margin:72px 0 24px}
+@media (max-width:960px){ h2{font-size:32px} }
+@media (max-width:640px){ h2{font-size:26px;margin:48px 0 18px} }
+h3{font-size:24px;font-weight:700;margin:40px 0 12px}
+
+p{margin:0 0 18px}
+ul{margin:0 0 18px;padding-left:26px}
+li{margin:0 0 10px}
+.checks{list-style:none;padding:0}
+.checks li{padding-left:34px;position:relative}
+.checks li::before{content:'✅';position:absolute;left:0}
+
+.metrics{display:flex;flex-wrap:wrap;gap:56px;margin:40px 0}
+.metrics div span{display:block;font-size:56px;font-weight:700;line-height:1;letter-spacing:-0.02em}
+.metrics div small{display:block;font-size:18px;color:var(--muted);margin-top:8px}
+@media (max-width:640px){ .metrics{gap:28px} .metrics div span{font-size:38px} }
+
+/* Картинки кейса — две колонки, как на странице SW */
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:32px 0 8px}
+.shots.one{grid-template-columns:1fr}
+.shots img{width:100%;display:block;border-radius:12px;background:#eef0f3}
+@media (max-width:640px){ .shots{grid-template-columns:1fr;gap:16px} }
+.caption{font-size:16px;color:var(--muted);margin:10px 0 0}
+
+.lesson{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px 32px;margin:56px 0}
+.lesson h3{margin-top:0}
+
+/* Места, куда нужно подставить фактуру. Заметны в вёрстке, легко найти поиском. */
+.todo{background:var(--todo-bg);border:1px dashed var(--todo-br);border-radius:10px;
+  padding:14px 18px;font-size:17px;color:#7a5b00;margin:0 0 18px}
+.todo b{color:#5d4500}
+
+footer{margin:96px 0 64px;color:var(--muted);font-size:16px}
+footer a{color:var(--accent)}
