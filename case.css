@@ -20,6 +20,12 @@ body{
 @media (max-width:960px){ .wrap{padding:0 40px} }
 @media (max-width:640px){ .wrap{padding:0 20px} body{font-size:18px} }
 
+/* Элементы, которые должны стоять по краю страницы, а не по колонке текста */
+.edge{width:100vw;position:relative;left:50%;transform:translateX(-50vw);
+  padding:0 80px;box-sizing:border-box}
+@media (max-width:960px){ .edge{padding:0 40px} }
+@media (max-width:640px){ .edge{padding:0 16px} }
+
 .back{display:inline-flex;align-items:center;gap:10px;margin:40px 0 0;
   font-size:18px;color:var(--ink);text-decoration:none}
 .back svg{display:block}
@@ -82,7 +88,9 @@ li{margin:0 0 10px}
 .todo b{color:#5d4500}
 
 /* Возврат ко всем кейсам внизу страницы */
-.allcases{border-top:1px solid var(--line);margin:96px 0 0;padding:40px 0 80px}
+.allcases{border-top:1px solid var(--line);margin:96px 0 0;padding:40px 80px 80px}
+@media (max-width:960px){ .allcases{padding:40px 40px 80px} }
+@media (max-width:640px){ .allcases{padding:32px 16px 64px} }
 .allcases a{display:inline-flex;align-items:center;gap:10px;font-size:20px;
   color:var(--ink);text-decoration:none}
 .allcases a:hover{opacity:.6}
