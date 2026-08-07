@@ -41,7 +41,8 @@ hr{border:0;border-top:1px solid var(--line);margin:40px 0}
 
 .intro{display:flex;gap:40px;align-items:flex-start;margin:0 0 56px}
 .intro .logo{font-size:34px;font-weight:700;letter-spacing:-0.01em;flex:0 0 240px}
-.intro p{margin:0;color:var(--muted)}
+.intro p{margin:0;color:var(--muted);font-size:16px;line-height:1.5}
+@media (max-width:640px){ .intro p{font-size:14px} }
 @media (max-width:640px){ .intro{flex-direction:column;gap:12px} .intro .logo{flex:none} }
 
 h2{font-size:42px;line-height:1.15;font-weight:600;letter-spacing:-0.01em;margin:72px 0 24px}
@@ -61,7 +62,7 @@ li{margin:0 0 10px}
 .metrics div small{display:block;font-size:18px;color:var(--muted);margin-top:8px}
 @media (max-width:640px){ .metrics{gap:28px} .metrics div span{font-size:38px} }
 
-/* Картинки кейса — две колонки, как на странице SW */
+/* Картинки кейса – две колонки, как на странице SW */
 /* Картинки живут в своей сетке: во всю ширину экрана,
    отступ от краев 80px на десктопе и 16px на мобильном.
    Число колонок задается классом .cols-1 … .cols-4 */
@@ -79,8 +80,13 @@ li{margin:0 0 10px}
 .caption{margin-left:0}
 .caption{font-size:16px;color:var(--muted);margin:10px 0 0}
 
-.lesson{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px 32px;margin:56px 0}
-.lesson h3{margin-top:0}
+/* Блок «Чему научил меня этот опыт» – как на sw */
+.lesson{margin:72px 0 0}
+.lesson h2{font-size:42px;line-height:1.15;font-weight:600;letter-spacing:-0.01em;margin:0 0 24px}
+.lesson__in{background:#f5f1fb;border:1px solid #e6ddf5;border-radius:16px;padding:32px 36px}
+.lesson__in p{font-size:24px;line-height:1.4;margin:0}
+@media (max-width:960px){ .lesson h2{font-size:32px} }
+@media (max-width:640px){ .lesson h2{font-size:26px} .lesson__in{padding:24px 20px} .lesson__in p{font-size:20px} }
 
 /* Места, куда нужно подставить фактуру. Заметны в верстке, легко найти поиском. */
 .todo{background:var(--todo-bg);border:1px dashed var(--todo-br);border-radius:10px;
