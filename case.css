@@ -66,7 +66,7 @@ li{margin:0 0 10px}
 /* Картинки живут в своей сетке: во всю ширину экрана,
    отступ от краев 80px на десктопе и 16px на мобильном.
    Число колонок задается классом .cols-1 … .cols-4 */
-.shots{display:grid;gap:24px;margin:32px 0 8px;
+.shots{display:grid;gap:40px;margin:32px 0 8px;
   grid-template-columns:repeat(2,1fr);
   width:100vw;position:relative;left:50%;transform:translateX(-50vw);
   padding:0 80px;box-sizing:border-box}
@@ -74,9 +74,10 @@ li{margin:0 0 10px}
 .shots.cols-2{grid-template-columns:repeat(2,1fr)}
 .shots.cols-3{grid-template-columns:repeat(3,1fr)}
 .shots.cols-4{grid-template-columns:repeat(4,1fr)}
-.shots img{width:100%;display:block;border-radius:12px;background:#eef0f3}
-@media (max-width:960px){ .shots{padding:0 40px;gap:16px} .shots.cols-3,.shots.cols-4{grid-template-columns:repeat(2,1fr)} }
-@media (max-width:640px){ .shots{padding:0 16px;grid-template-columns:1fr!important;gap:16px} }
+.shots img{width:100%;display:block;border-radius:40px;background:#eef0f3}
+@media (max-width:960px){ .shots{padding:0 40px;gap:24px} .shots.cols-3,.shots.cols-4{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:640px){ .shots{padding:0 16px;grid-template-columns:1fr!important;gap:16px}
+  .shots img{border-radius:16px} }
 .caption{margin-left:0}
 .caption{font-size:16px;color:var(--muted);margin:10px 0 0}
 
