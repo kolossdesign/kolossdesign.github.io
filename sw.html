@@ -24,13 +24,20 @@
     <div class="logo"><img src="assets/tild3435-6534-4636-a236-383633303730/LogoSW2.svg" alt="Siberian Wellness" style="width:200px;max-width:100%;display:block"></div>
     <p>Siberian Wellness – международная MLM компания, лидер рынка Health &amp; Beauty в России.</p>
   </div>
-  <div class="shots cols-3">
-    <img src="assets/tild3639-3764-4564-b739-306234613764/swpreview9.webp" alt="" loading="lazy" decoding="async">
-    <img src="assets/tild3437-3738-4130-b931-366437343438/swpreview12.webp" alt="" loading="lazy" decoding="async">
-    <img src="assets/tild3964-3264-4962-b031-373234303537/swpreview1.webp" alt="" loading="lazy" decoding="async">
-    <img src="assets/tild3437-3162-4361-b334-323463376636/swpreview5.webp" alt="" loading="lazy" decoding="async">
-    <img src="assets/tild3264-6362-4839-a664-336232353234/swpreview8.webp" alt="" loading="lazy" decoding="async">
-    <img src="assets/tild3232-3530-4839-a139-383131313533/swpreview6.webp" alt="" loading="lazy" decoding="async">
+  <div class="marquee">
+    <div class="marquee__track">
+      <img src="assets/tild3639-3764-4564-b739-306234613764/swpreview9.webp" alt="" loading="lazy" decoding="async">
+      <img src="assets/tild6535-3333-4464-b735-386130633566/swiphone1.webp" alt="" loading="lazy" decoding="async">
+      <img src="assets/tild3437-3738-4130-b931-366437343438/swpreview12.webp" alt="" loading="lazy" decoding="async">
+      <img src="assets/tild3964-3264-4962-b031-373234303537/swpreview1.webp" alt="" loading="lazy" decoding="async">
+      <img src="assets/tild3437-3162-4361-b334-323463376636/swpreview5.webp" alt="" loading="lazy" decoding="async">
+      <img src="assets/tild3264-6362-4839-a664-336232353234/swpreview8.webp" alt="" loading="lazy" decoding="async">
+      <img src="assets/tild3232-3530-4839-a139-383131313533/swpreview6.webp" alt="" loading="lazy" decoding="async">
+      <img src="assets/tild3266-3032-4963-a238-633365336466/swpreview11.webp" alt="" loading="lazy" decoding="async">
+      <img src="assets/tild3338-3134-4135-b936-343239353663/swpreview4.webp" alt="" loading="lazy" decoding="async">
+      <img src="assets/tild3661-6665-4566-b432-383563616261/swpreview2.webp" alt="" loading="lazy" decoding="async">
+      <img src="assets/tild6234-3435-4537-b930-373034336630/swpreview10.webp" alt="" loading="lazy" decoding="async">
+    </div>
   </div>
   <h2>Что отличает этот опыт</h2>
   <ul class="checks">
@@ -118,4 +125,25 @@
       </svg>Вернуться ко всем продуктам</a>
   </div>
 </div>
+<script>
+/* Лента едет влево бесконечно: список дублируется, сдвиг сбрасывается на половине */
+document.addEventListener('DOMContentLoaded', () => {
+  const track = document.querySelector('.marquee__track');
+  if (!track) return;
+  [...track.children].forEach(img => track.appendChild(img.cloneNode(true)));
+  const imgs = [...track.querySelectorAll('img')];
+  Promise.all(imgs.map(i => i.complete ? Promise.resolve()
+      : new Promise(r => { i.onload = r; i.onerror = r; }))).then(() => {
+    const half = track.scrollWidth / 2;
+    let x = 0;
+    const step = () => {
+      x -= 1;
+      if (-x >= half) x = 0;
+      track.style.transform = `translateX(${x}px)`;
+      requestAnimationFrame(step);
+    };
+    step();
+  });
+});
+</script>
 </body></html>
