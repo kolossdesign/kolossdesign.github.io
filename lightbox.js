@@ -1,8 +1,8 @@
 /* Увеличение картинок по клику в блоках .shots.zoomable.
    WHY: страницы статические, без сборки — один самодостаточный файл без зависимостей. */
 (function () {
-  var imgs = [].slice.call(document.querySelectorAll('.shots.zoomable img'));
-  if (!imgs.length) return;
+  var groups = [].slice.call(document.querySelectorAll('.shots.zoomable'));
+  if (!groups.length) return;
 
   var lb = document.createElement('div');
   lb.className = 'lb';
@@ -16,6 +16,7 @@
 
   var big = lb.querySelector('img');
   var count = lb.querySelector('.lb__count');
+  var imgs = [];      // текущая галерея — только картинки одного блока
   var i = 0;
 
   function show(n) {
@@ -34,8 +35,11 @@
     big.removeAttribute('src');
   }
 
-  imgs.forEach(function (im, n) {
-    im.addEventListener('click', function () { open(n); });
+  groups.forEach(function (g) {
+    var list = [].slice.call(g.querySelectorAll('img'));
+    list.forEach(function (im, n) {
+      im.addEventListener('click', function () { imgs = list; open(n); });
+    });
   });
   lb.querySelector('.lb__prev').addEventListener('click', function (e) { e.stopPropagation(); show(i - 1); });
   lb.querySelector('.lb__next').addEventListener('click', function (e) { e.stopPropagation(); show(i + 1); });
