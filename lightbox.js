@@ -50,29 +50,51 @@
   });
 })();
 
-/* Мокап макбука: ползунок и внутренняя прокрутка синхронизированы.
-   WHY: макет высотой ~5000px иначе занимает пол-страницы и мешает читать кейс. */
+/* Мокап браузера: свой ползунок на pointer-событиях + внутренняя прокрутка.
+   WHY: input[type=range] в вертикальной ориентации работает не во всех браузерах – был неподвижен. */
 (function () {
   [].slice.call(document.querySelectorAll('.macbox')).forEach(function (box) {
     var sc = box.querySelector('.mac__scroll');
-    var range = box.querySelector('.macslider input');
-    if (!sc || !range) return;
-    var lock = false;
-    function max() { return Math.max(1, sc.scrollHeight - sc.clientHeight); }
-    range.addEventListener('input', function () {
-      lock = true;
-      sc.scrollTop = max() * (range.value / 1000);
-      lock = false;
+    var rail = box.querySelector('.macslider');
+    var thumb = box.querySelector('.macslider__thumb');
+    if (!sc || !rail || !thumb) return;
+
+    function vertical() { return rail.clientHeight > rail.clientWidth; }
+    function maxScroll() { return Math.max(1, sc.scrollHeight - sc.clientHeight); }
+    function freeRail() {
+      return vertical() ? Math.max(1, rail.clientHeight - thumb.offsetHeight)
+                        : Math.max(1, rail.clientWidth - thumb.offsetWidth);
+    }
+    function paint() {
+      var k = sc.scrollTop / maxScroll();
+      if (vertical()) { thumb.style.top = (k * freeRail()) + 'px'; thumb.style.left = '-3px'; }
+      else { thumb.style.left = (k * freeRail()) + 'px'; thumb.style.top = '-3px'; }
+    }
+    function setFromPoint(e) {
+      var r = rail.getBoundingClientRect();
+      var k = vertical()
+        ? (e.clientY - r.top - thumb.offsetHeight / 2) / freeRail()
+        : (e.clientX - r.left - thumb.offsetWidth / 2) / freeRail();
+      k = Math.min(1, Math.max(0, k));
+      sc.scrollTop = k * maxScroll();
+      paint();
+    }
+
+    var dragging = false;
+    thumb.addEventListener('pointerdown', function (e) {
+      dragging = true; thumb.setPointerCapture(e.pointerId); e.preventDefault();
     });
-    sc.addEventListener('scroll', function () {
-      if (lock) return;
-      range.value = Math.round((sc.scrollTop / max()) * 1000);
-    }, { passive: true });
-    // колесо мыши над экраном прокручивает макет, но не «залипает» на краях
-    sc.addEventListener('wheel', function (e) {
-      var atTop = sc.scrollTop <= 0 && e.deltaY < 0;
-      var atEnd = sc.scrollTop >= max() - 1 && e.deltaY > 0;
-      if (!atTop && !atEnd) e.stopPropagation();
-    }, { passive: true });
+    thumb.addEventListener('pointermove', function (e) { if (dragging) setFromPoint(e); });
+    thumb.addEventListener('pointerup', function () { dragging = false; });
+    thumb.addEventListener('pointercancel', function () { dragging = false; });
+    // клик по дорожке — прыжок в эту точку
+    rail.addEventListener('pointerdown', function (e) { if (e.target !== thumb) setFromPoint(e); });
+
+    sc.addEventListener('scroll', function () { if (!dragging) paint(); }, { passive: true });
+    window.addEventListener('resize', paint);
+    if (sc.querySelector('img') && !sc.querySelector('img').complete) {
+      sc.querySelector('img').addEventListener('load', paint);
+    }
+    paint();
   });
 })();
