@@ -61,6 +61,8 @@ li{margin:0 0 10px}
 
 /* Достижения: всегда три в ряд на десктопе */
 .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:40px 56px;margin:40px 0}
+.metrics:has(>div:nth-child(2):last-child){grid-template-columns:repeat(2,1fr)}
+.metrics:has(>div:only-child){grid-template-columns:1fr}
 @media (max-width:640px){ .metrics{grid-template-columns:1fr} }
 .metrics div span{display:block;font-size:56px;font-weight:700;line-height:1;letter-spacing:-0.02em}
 .metrics div small{display:block;font-size:18px;color:var(--muted);margin-top:8px}
@@ -174,6 +176,10 @@ footer a{color:var(--accent)}
 .macslider__thumb{position:absolute;left:-4px;width:20px;height:88px;border-radius:10px;
   background:#1d1d1f;top:0;cursor:grab;border:2px solid #fff;
   box-shadow:0 2px 8px rgba(0,0,0,.28)}
+/* насечки под палец */
+.macslider__thumb::after{content:'';position:absolute;left:50%;top:50%;
+  transform:translate(-50%,-50%);width:10px;height:10px;
+  background:repeating-linear-gradient(to bottom,rgba(255,255,255,.85) 0 2px,transparent 2px 4px)}
 .macslider__thumb:active{cursor:grabbing;background:#000}
 .mac__hint{margin:12px 0 0;font-size:16px;color:var(--muted);
   display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:center;text-align:center}
@@ -189,6 +195,8 @@ footer a{color:var(--accent)}
   .macrow{flex-direction:column;gap:10px}
   .macslider{flex:none;width:100%;height:12px;margin:0}
   .macslider__thumb{left:0;top:-4px;width:88px;height:20px}
+  .macslider__thumb::after{width:10px;height:10px;
+    background:repeating-linear-gradient(to right,rgba(255,255,255,.85) 0 2px,transparent 2px 4px)}
   .mac__hint{font-size:14px;margin-top:8px}
 }
 
