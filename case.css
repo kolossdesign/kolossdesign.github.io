@@ -86,6 +86,7 @@ li{margin:0 0 10px}
   .shots img{border-radius:16px} }
 /* Картинка-схема на светлом фоне: не должна упираться в края карточки */
 .shots--pad img{padding:40px;background:#fff;border:1px solid var(--line)}
+.shots--pad.shots--plain img{border:0;background:#e3f2ff}
 @media (max-width:960px){ .shots--pad img{padding:16px} }
 
 /* Галерея с увеличением по клику */
@@ -139,5 +140,5 @@ footer a{color:var(--accent)}
 .marquee{width:100vw;position:relative;left:50%;transform:translateX(-50vw);
   overflow:hidden;margin:32px 0 8px}
 .marquee__track{display:flex;gap:20px;width:max-content;will-change:transform}
-.marquee__track img{height:550px;width:auto;flex:none;display:block;border-radius:24px;background:#eef0f3}
-@media (max-width:980px){ .marquee__track img{height:300px;border-radius:16px} }
+.marquee__track img{height:688px;width:auto;flex:none;display:block;border-radius:24px;background:#eef0f3}
+@media (max-width:980px){ .marquee__track img{height:375px;border-radius:16px} }
