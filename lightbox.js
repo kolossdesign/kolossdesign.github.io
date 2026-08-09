@@ -49,3 +49,30 @@
     if (e.key === 'ArrowRight') show(i + 1);
   });
 })();
+
+/* Мокап макбука: ползунок и внутренняя прокрутка синхронизированы.
+   WHY: макет высотой ~5000px иначе занимает пол-страницы и мешает читать кейс. */
+(function () {
+  [].slice.call(document.querySelectorAll('.macbox')).forEach(function (box) {
+    var sc = box.querySelector('.mac__scroll');
+    var range = box.querySelector('.macslider input');
+    if (!sc || !range) return;
+    var lock = false;
+    function max() { return Math.max(1, sc.scrollHeight - sc.clientHeight); }
+    range.addEventListener('input', function () {
+      lock = true;
+      sc.scrollTop = max() * (range.value / 1000);
+      lock = false;
+    });
+    sc.addEventListener('scroll', function () {
+      if (lock) return;
+      range.value = Math.round((sc.scrollTop / max()) * 1000);
+    }, { passive: true });
+    // колесо мыши над экраном прокручивает макет, но не «залипает» на краях
+    sc.addEventListener('wheel', function (e) {
+      var atTop = sc.scrollTop <= 0 && e.deltaY < 0;
+      var atEnd = sc.scrollTop >= max() - 1 && e.deltaY > 0;
+      if (!atTop && !atEnd) e.stopPropagation();
+    }, { passive: true });
+  });
+})();
