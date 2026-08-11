@@ -225,3 +225,41 @@ footer a{color:var(--accent)}
 .lb--long img{max-height:none;width:auto;max-width:1100px;margin:0 auto;border-radius:10px}
 .lb--long .lb__close{position:fixed}
 @media (max-width:640px){ .lb--long{padding:56px 8px} }
+
+/* Демо-мокап: браузер без прокрутки, внутри зацикленный сценарий «клик по ресторану».
+   WHY: показать взаимодействие, а не два статичных скрина рядом. */
+.demo .mac__screen{aspect-ratio:1440/1000;overflow:hidden}
+.demo__stack{position:absolute;inset:0}
+.demo__stack img{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover}
+.demo__after{opacity:0;animation:demoAfter 8s ease-in-out infinite}
+.demo__cursor{position:absolute;width:2.2%;z-index:3;left:58%;top:26%;
+  filter:drop-shadow(0 2px 4px rgba(0,0,0,.35));animation:demoCursor 8s ease-in-out infinite}
+.demo__tap{position:absolute;z-index:2;left:24%;top:67%;width:44px;height:44px;margin:-22px 0 0 -22px;
+  border-radius:50%;background:rgba(0,0,0,.18);opacity:0;transform:scale(.2);
+  animation:demoTap 8s ease-in-out infinite}
+@keyframes demoCursor{
+  0%{left:58%;top:26%}
+  22%{left:24%;top:67%}
+  26%{left:24%;top:67%;transform:scale(.88)}
+  30%{left:24%;top:67%;transform:scale(1)}
+  84%{left:24%;top:67%}
+  100%{left:58%;top:26%}
+}
+@keyframes demoTap{
+  0%,24%{opacity:0;transform:scale(.2)}
+  26%{opacity:.5;transform:scale(.5)}
+  34%{opacity:0;transform:scale(1.4)}
+  100%{opacity:0;transform:scale(1.4)}
+}
+@keyframes demoAfter{
+  0%,28%{opacity:0}
+  34%,84%{opacity:1}
+  92%,100%{opacity:0}
+}
+.demo__note{margin:12px 0 0;font-size:16px;color:var(--muted);text-align:center}
+@media (prefers-reduced-motion:reduce){
+  .demo__after,.demo__cursor,.demo__tap{animation:none}
+  .demo__after{opacity:1}
+  .demo__cursor,.demo__tap{display:none}
+}
+@media (max-width:640px){ .demo__note{font-size:14px} }
