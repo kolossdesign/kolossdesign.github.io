@@ -243,15 +243,16 @@ footer a{color:var(--accent)}
 /* Карточка ресторана: выезжает справа от колонки и сама прокручивается */
 .demo__sheet{position:absolute;left:44.44%;top:0;width:33.33%;height:100%;
   overflow:hidden;background:#fff;box-shadow:0 0 24px rgba(0,0,0,.18);
-  transform:translateX(170%);animation:demoSheet 16s ease-in-out infinite}
+  opacity:0;animation:demoSheet 16s ease-in-out infinite}
 .demo__sheet img{position:absolute;left:0;top:0;width:100%;display:block;
   animation:demoCard 16s ease-in-out infinite}
 
 .demo__cursor{position:absolute;width:2.2%;z-index:4;left:70%;top:22%;
   filter:drop-shadow(0 2px 4px rgba(0,0,0,.35));animation:demoCursor 16s ease-in-out infinite}
-.demo__tap{position:absolute;z-index:3;width:44px;height:44px;margin:-22px 0 0 -22px;
-  border-radius:50%;background:rgba(0,0,0,.18);opacity:0;transform:scale(.2);
-  animation:demoTap 16s linear infinite}
+.demo__tap{position:absolute;z-index:3;width:110px;height:110px;margin:-55px 0 0 -55px;
+  border-radius:50%;background:rgba(17,19,24,.28);border:4px solid #fff;
+  box-shadow:0 0 0 2px rgba(17,19,24,.35), 0 4px 16px rgba(0,0,0,.3);
+  opacity:0;transform:scale(.2);animation:demoTap 16s ease-out infinite}
 
 /* 0–8 курсор к полю поиска, 10 клик, 12 форма заполнена и появилась выдача,
    16–30 лента едет вниз, 32–40 назад, 42 курсор на «Счастье», 46 клик,
@@ -259,23 +260,24 @@ footer a{color:var(--accent)}
 @keyframes demoCursor{
   0%,4%{left:70%;top:22%}
   10%{left:4.5%;top:16.5%}
-  12%{left:4.5%;top:16.5%;transform:scale(.85)}
+  11.5%{left:4.5%;top:16.5%;transform:scale(.72)}
   14%{left:4.5%;top:16.5%;transform:scale(1)}
   20%{left:4.5%;top:16.5%}
   42%{left:30%;top:60%}
-  46%{left:30%;top:60%;transform:scale(.85)}
-  48%{left:30%;top:60%;transform:scale(1)}
+  45%{left:30%;top:60%;transform:scale(1)}
+  46.5%{left:30%;top:60%;transform:scale(.72)}
+  49%{left:30%;top:60%;transform:scale(1)}
   86%{left:30%;top:60%}
   100%{left:70%;top:22%}
 }
 @keyframes demoTap{
-  0%,10%{left:4.5%;top:16.5%;opacity:0;transform:scale(.2)}
-  12%{left:4.5%;top:16.5%;opacity:.45;transform:scale(.6)}
-  17%{left:4.5%;top:16.5%;opacity:0;transform:scale(1.4)}
-  45%{left:30%;top:60%;opacity:0;transform:scale(.2)}
-  47%{left:30%;top:60%;opacity:.45;transform:scale(.6)}
-  52%{left:30%;top:60%;opacity:0;transform:scale(1.4)}
-  100%{left:30%;top:60%;opacity:0;transform:scale(1.4)}
+  0%,10%{left:4.5%;top:16.5%;opacity:0;transform:scale(.15)}
+  11.5%{left:4.5%;top:16.5%;opacity:1;transform:scale(.45)}
+  18%{left:4.5%;top:16.5%;opacity:0;transform:scale(1.25)}
+  44%{left:30%;top:60%;opacity:0;transform:scale(.15)}
+  46%{left:30%;top:60%;opacity:1;transform:scale(.45)}
+  53%{left:30%;top:60%;opacity:0;transform:scale(1.25)}
+  100%{left:30%;top:60%;opacity:0;transform:scale(1.25)}
 }
 @keyframes demoAfter{
   0%,13%{opacity:0}
@@ -287,10 +289,11 @@ footer a{color:var(--accent)}
   32%{transform:translateY(-42%)}
   40%,100%{transform:translateY(0)}
 }
+/* Лента гаснет одновременно с карточкой — цикл начинается с чистого экрана */
 @keyframes demoSheet{
-  0%,48%{transform:translateX(170%)}
-  54%,86%{transform:translateX(0)}
-  92%,100%{transform:translateX(170%)}
+  0%,47%{opacity:0;transform:scale(.985)}
+  52%,88%{opacity:1;transform:scale(1)}
+  93%,100%{opacity:0;transform:scale(1)}
 }
 @keyframes demoCard{
   0%,58%{transform:translateY(0)}
@@ -301,7 +304,7 @@ footer a{color:var(--accent)}
   .demo__after,.demo__list,.demo__list img,.demo__sheet,.demo__sheet img,
   .demo__cursor,.demo__tap{animation:none}
   .demo__after,.demo__list{opacity:1}
-  .demo__sheet{transform:translateX(0)}
+  .demo__sheet{opacity:1}
   .demo__cursor,.demo__tap{display:none}
 }
 .demo__note{margin:12px 0 0;font-size:16px;color:var(--muted);text-align:center}

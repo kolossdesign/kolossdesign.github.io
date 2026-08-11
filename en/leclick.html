@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LeClick – restaurant table booking – Vladimir Seliverstov</title>
+<meta name="description" content="LeClick – a table booking service built from scratch and acquired by Yandex.">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/case.css">
+<link rel="icon" type="image/x-icon" sizes="32x32" href="/assets/tild3832-3866-4666-a264-636531393763/fire.webp" media="(prefers-color-scheme: light)"/>
+<link rel="icon" type="image/x-icon" sizes="32x32" href="/assets/tild3735-3732-4336-b736-626662376663/fire.webp" media="(prefers-color-scheme: dark)"/>
+</head>
+<body>
+<div class="wrap">
+  <div class="edge"><a class="back" href="/en/">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M9.2 6.4 3 12.6 9.2 18M3.4 12.6H20.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </svg>Back</a></div>
+
+  <h1>Built a table booking product from scratch that Yandex acquired</h1>
+  <p class="role">Role: Product Designer</p>
+  <p class="stages">Discovery • Concept • UX/UI • Branding • Delivery</p>
+  <hr>
+
+  <div class="intro">
+    <div class="logo"><img src="/assets/tbo/logo-leclick.svg" alt="LeClick" style="width:220px;max-width:100%;display:block"></div>
+    <p>A booking service for restaurants and bars. The guest picks a venue, a time and a table; the restaurant manages seating. The product was built from scratch and grew to a nationwide scale.</p>
+  </div>
+
+  <div class="macbox demo">
+    <div class="macrow">
+      <div class="mac">
+        <div class="mac__body">
+          <div class="mac__bar">
+            <div class="mac__dots"><i></i><i></i><i></i></div>
+            <div class="mac__url">leclick.ru</div>
+          </div>
+          <div class="mac__screen">
+            <div class="demo__stack">
+              <img src="/assets/lc/lc1.webp" alt="Restaurant search: empty form and map" loading="lazy" decoding="async">
+              <img class="demo__after" src="/assets/lc/lc2.webp" alt="Search results for the query" loading="lazy" decoding="async">
+            </div>
+            <div class="demo__list"><img src="/assets/lc/list.webp" alt="The feed of found restaurants" loading="lazy" decoding="async"></div>
+            <div class="demo__sheet"><img src="/assets/lc/card.webp" alt="Restaurant card: slots, menu, reviews" loading="lazy" decoding="async"></div>
+            <span class="demo__tap"></span>
+            <svg class="demo__cursor" viewBox="0 0 24 32" fill="none" aria-hidden="true">
+              <path d="M2 1.5 21 15.5 12.4 16.6 17 27.6 13.3 29.2 8.7 18.2 2 24z" fill="#fff" stroke="#111" stroke-width="1.6" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Project results</h2>
+  <div class="metrics">
+    <div><span>2500+</span><small>restaurants and bars on the platform</small></div>
+    <div><span>25</span><small>cities across Russia</small></div>
+    <div><span>Yandex</span><small>acquired the product</small></div>
+  </div>
+  <p>At the time of the acquisition LeClick worked with more than 2,500 restaurants and bars in 25 Russian cities. The product became the basis of the booking service in Yandex.Eda.</p>
+
+  <h2>What made this project different</h2>
+  <ul class="checks">
+    <li>A product from scratch: no legacy, no ready-made scenarios</li>
+    <li>A two-sided market – the guest and the restaurant want different things</li>
+    <li>The market validated the result: Yandex bought the product and built it into its ecosystem</li>
+    <li>I owned both the product side and the visual language</li>
+  </ul>
+
+  <h2>The task</h2>
+  <p>Replace booking by phone with a scenario where the guest gets a confirmation instantly and the restaurant sees and controls its occupancy. In a two-sided product you cannot optimise for one side only: the guest needs speed, the restaurant needs a full room and predictability.</p>
+
+  <h2>Discovery</h2>
+  <p>I started with how booking works without a product: a phone call, the host’s notebook, manual checks. I looked into where time is lost and where no-shows come from.</p>
+  <p>I mapped the process from three sides at once – the guest, the host and the restaurant. Interviews with guests showed what they expect from a booking; interviews with restaurateurs showed what a full room means to them; watching a host’s shift and going through paper logbooks revealed what interviews never mention: the real mechanics of rush hour.</p>
+  <div class="shots cols-1 shots--pad">
+    <img src="/assets/lc/discovery-map.svg" alt="Map of the current booking process: three sides, five steps, points of loss" loading="lazy" decoding="async">
+  </div>
+  <p class="caption">Research artefact: a map of the current booking process across the three sides.</p>
+
+  <h3>Key findings</h3>
+  <ul>
+    <li><b>The guest does not need a booking, they need a guarantee.</b> As long as the confirmation exists only in words, the guest treats the table as “sort of booked” and calmly keeps looking at other options.</li>
+    <li><b>Demand is lost before the conversation even starts.</b> Some guests never get through during rush hour – exactly when a booking is most valuable to the restaurant. Nobody counts those people.</li>
+    <li><b>The host keeps the floor plan in their head.</b> The seating plan is not recorded anywhere, so the same table is easily promised twice and the knowledge does not survive a shift change.</li>
+    <li><b>A no-show is not a problem until it becomes visible.</b> Without data the restaurant cannot tell a no-show from a cancellation and cannot do anything about it.</li>
+    <li><b>What matters to the restaurant is predictability, not the number of bookings.</b> The value of the product for a venue is a clear picture of the evening ahead, not an individual request.</li>
+  </ul>
+
+  <h2>The solution</h2>
+  <p>I built a scenario where the guest gets a confirmation straight away and the restaurant manages seating without manual checks. The visual language was made so that a booking feels like a promise rather than a request in a directory. The product lives in two environments: a desktop site for choosing and an app for booking on the go.</p>
+
+  <h3>Desktop: finding and choosing a restaurant</h3>
+  <p>The list and the map work as one: the guest filters venues, and the restaurant card with its free slots opens in a side sheet – no separate page, no losing the search results.</p>
+  <div class="shots cols-1 shots--line">
+    <img src="/assets/lc/lc30.webp" alt="Restaurant search: filters, feed and map" loading="lazy" decoding="async">
+  </div>
+  <div class="shots cols-2 zoomable shots--line">
+    <img src="/assets/lc/lc3.webp" alt="Restaurant card" loading="lazy" decoding="async">
+    <img src="/assets/lc/lc4.webp" alt="Table booking" loading="lazy" decoding="async">
+  </div>
+
+  <h3>App: booking on the go</h3>
+  <p>In the mobile version the same scenario is compressed into a few taps: nearby restaurants on the map, choosing a time and a table, confirming the booking and the booking history in the profile.</p>
+  <div class="shots cols-1">
+    <img src="/assets/lc/app_cover.webp" alt="The LeClick app" loading="lazy" decoding="async">
+  </div>
+  <div class="shots cols-2 zoomable">
+    <img src="/assets/lc/app1.webp" alt="Restaurant card and photo gallery" loading="lazy" decoding="async">
+    <img src="/assets/lc/app3.webp" alt="Booking a table and confirmation" loading="lazy" decoding="async">
+    <img src="/assets/lc/app4.webp" alt="Booking details" loading="lazy" decoding="async">
+    <img src="/assets/lc/app2.webp" alt="Reviews and rating" loading="lazy" decoding="async">
+  </div>
+
+  <div class="lesson">
+    <h2>What this experience taught me</h2>
+    <div class="lesson__in"><p>In two-sided products the winner is not the one who makes it more convenient for the guest, but the one who finds a scenario where both sides gain from the same single action.</p></div>
+  </div>
+
+  <div class="allcases edge">
+    <a href="/en/">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M9.2 6.4 3 12.6 9.2 18M3.4 12.6H20.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>Back to all products</a>
+  </div>
+</div>
+<script src="/lightbox.js" defer></script>
+<script src="/lang.js" defer></script>
+</body></html>
