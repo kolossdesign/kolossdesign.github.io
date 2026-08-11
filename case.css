@@ -143,7 +143,7 @@ footer a{color:var(--accent)}
 .marquee{width:100vw;position:relative;left:50%;transform:translateX(-50vw);
   overflow:hidden;margin:32px 0 8px}
 .marquee__track{display:flex;gap:20px;width:max-content;will-change:transform}
-.marquee__track img{height:688px;width:auto;flex:none;display:block;border-radius:24px;background:#eef0f3}
+.marquee__track img{height:688px;width:auto;flex:none;display:block;border-radius:24px;background:transparent}
 @media (max-width:980px){ .marquee__track img{height:375px;border-radius:16px} }
 
 /* Мокап браузера с прокруткой длинного макета внутри окна.
@@ -165,9 +165,9 @@ footer a{color:var(--accent)}
   padding:5px 12px;font-size:13px;color:#6b7280;white-space:nowrap;overflow:hidden;
   text-overflow:ellipsis;border:1px solid #dfe1e6}
 .mac__screen{position:relative;background:#fff;aspect-ratio:16/10;border-top:1px solid #d8dadf}
-.mac__scroll{position:absolute;inset:0;overflow-y:auto;overscroll-behavior:auto;
-  scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.mac__scroll{position:absolute;inset:0;overflow:hidden;scrollbar-width:none}
 .mac__scroll::-webkit-scrollbar{display:none}
+.mac__scroll img{pointer-events:none}
 .mac__scroll img{width:100%;display:block;border-radius:0;background:#fff}
 
 /* Свой ползунок внутри окна: input[type=range] в вертикальном виде поддержан не везде */
@@ -175,7 +175,14 @@ footer a{color:var(--accent)}
   background:#dcdfe5;border-radius:6px;touch-action:none;cursor:pointer}
 .macslider__thumb{position:absolute;left:-4px;width:20px;height:88px;border-radius:10px;
   background:#1d1d1f;top:0;cursor:grab;border:2px solid #fff;
-  box-shadow:0 2px 8px rgba(0,0,0,.28)}
+  box-shadow:0 2px 8px rgba(0,0,0,.28);animation:thumbHint 2.4s ease-in-out infinite}
+.macslider__thumb.is-touched{animation:none}
+@keyframes thumbHint{
+  0%,72%,100%{transform:translateY(0);box-shadow:0 2px 8px rgba(0,0,0,.28)}
+  80%{transform:translateY(7px);box-shadow:0 4px 14px rgba(0,0,0,.34)}
+  90%{transform:translateY(-3px)}
+}
+@media (prefers-reduced-motion:reduce){ .macslider__thumb{animation:none} }
 /* насечки под палец */
 .macslider__thumb::after{content:'';position:absolute;left:50%;top:50%;
   transform:translate(-50%,-50%);width:10px;height:10px;
@@ -183,7 +190,7 @@ footer a{color:var(--accent)}
 .macslider__thumb:active{cursor:grabbing;background:#000}
 .mac__hint{margin:12px 0 0;font-size:16px;color:var(--muted);
   display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:center;text-align:center}
-.mac__hint a{color:var(--accent);text-decoration:none}
+.mac__hint a{color:var(--accent);text-decoration:none;cursor:zoom-in}
 .mac__hint a:hover{text-decoration:underline}
 
 @media (max-width:960px){ .macbox{padding:0 40px} }
@@ -194,7 +201,12 @@ footer a{color:var(--accent)}
   .mac__url{font-size:11px}
   .macrow{flex-direction:column;gap:10px}
   .macslider{flex:none;width:100%;height:12px;margin:0}
-  .macslider__thumb{left:0;top:-4px;width:88px;height:20px}
+  .macslider__thumb{left:0;top:-4px;width:88px;height:20px;animation-name:thumbHintH}
+  @keyframes thumbHintH{
+    0%,72%,100%{transform:translateX(0)}
+    80%{transform:translateX(7px)}
+    90%{transform:translateX(-3px)}
+  }
   .macslider__thumb::after{width:10px;height:10px;
     background:repeating-linear-gradient(to right,rgba(255,255,255,.85) 0 2px,transparent 2px 4px)}
   .mac__hint{font-size:14px;margin-top:8px}
@@ -207,3 +219,9 @@ footer a{color:var(--accent)}
 .mactabs button[aria-selected="true"]{background:#1d1d1f;border-color:#1d1d1f;color:#fff}
 .macpane[hidden]{display:none}
 @media (max-width:640px){ .mactabs button{font-size:14px;padding:8px 14px} }
+
+/* Попап «Открыть целиком»: длинный макет со своей прокруткой */
+.lb--long{align-items:flex-start;overflow-y:auto;padding:40px 24px}
+.lb--long img{max-height:none;width:auto;max-width:1100px;margin:0 auto;border-radius:10px}
+.lb--long .lb__close{position:fixed}
+@media (max-width:640px){ .lb--long{padding:56px 8px} }

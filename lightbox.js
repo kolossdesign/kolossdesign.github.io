@@ -54,25 +54,28 @@
   });
 })();
 
-/* Мокап браузера: свой ползунок на pointer-событиях + внутренняя прокрутка.
-   WHY: input[type=range] в вертикальной ориентации работает не во всех браузерах – был неподвижен. */
+/* Мокап браузера: свой ползунок на pointer-событиях, макет крутится только им.
+   WHY: input[type=range] в вертикальной ориентации работает не во всех браузерах,
+   а перехват колеса мыши мешал листать саму страницу. */
 (function () {
   [].slice.call(document.querySelectorAll('.macbox')).forEach(function (box) {
-    var sc = box.querySelector('.mac__scroll');
     var rail = box.querySelector('.macslider');
     var thumb = box.querySelector('.macslider__thumb');
-    if (!sc || !rail || !thumb) return;
+    if (!rail || !thumb) return;
 
+    function sc() {
+      return box.querySelector('.macpane:not([hidden]) .mac__scroll') || box.querySelector('.mac__scroll');
+    }
     function vertical() { return rail.clientHeight > rail.clientWidth; }
-    function maxScroll() { return Math.max(1, sc.scrollHeight - sc.clientHeight); }
+    function maxScroll() { var s = sc(); return Math.max(1, s.scrollHeight - s.clientHeight); }
     function freeRail() {
       return vertical() ? Math.max(1, rail.clientHeight - thumb.offsetHeight)
                         : Math.max(1, rail.clientWidth - thumb.offsetWidth);
     }
     function paint() {
-      var k = sc.scrollTop / maxScroll();
-      if (vertical()) { thumb.style.top = (k * freeRail()) + 'px'; thumb.style.left = '-3px'; }
-      else { thumb.style.left = (k * freeRail()) + 'px'; thumb.style.top = '-3px'; }
+      var k = sc().scrollTop / maxScroll();
+      if (vertical()) { thumb.style.top = (k * freeRail()) + 'px'; thumb.style.left = '-4px'; }
+      else { thumb.style.left = (k * freeRail()) + 'px'; thumb.style.top = '-4px'; }
     }
     function setFromPoint(e) {
       var r = rail.getBoundingClientRect();
@@ -80,25 +83,93 @@
         ? (e.clientY - r.top - thumb.offsetHeight / 2) / freeRail()
         : (e.clientX - r.left - thumb.offsetWidth / 2) / freeRail();
       k = Math.min(1, Math.max(0, k));
-      sc.scrollTop = k * maxScroll();
+      sc().scrollTop = k * maxScroll();
       paint();
     }
 
     var dragging = false;
     thumb.addEventListener('pointerdown', function (e) {
-      dragging = true; thumb.setPointerCapture(e.pointerId); e.preventDefault();
+      dragging = true; thumb.classList.add('is-touched');
+      thumb.setPointerCapture(e.pointerId); e.preventDefault();
     });
     thumb.addEventListener('pointermove', function (e) { if (dragging) setFromPoint(e); });
     thumb.addEventListener('pointerup', function () { dragging = false; });
     thumb.addEventListener('pointercancel', function () { dragging = false; });
-    // клик по дорожке — прыжок в эту точку
-    rail.addEventListener('pointerdown', function (e) { if (e.target !== thumb) setFromPoint(e); });
+    rail.addEventListener('pointerdown', function (e) {
+      thumb.classList.add('is-touched');
+      if (e.target !== thumb) setFromPoint(e);
+    });
 
-    sc.addEventListener('scroll', function () { if (!dragging) paint(); }, { passive: true });
+    // на тач-устройствах макет по-прежнему листается пальцем
+    [].slice.call(box.querySelectorAll('.mac__scroll')).forEach(function (s) {
+      var ty = null;
+      s.addEventListener('touchstart', function (e) { ty = e.touches[0].clientY; }, { passive: true });
+      s.addEventListener('touchmove', function (e) {
+        if (ty === null) return;
+        var y = e.touches[0].clientY;
+        s.scrollTop += (ty - y); ty = y; paint();
+      }, { passive: true });
+      s.addEventListener('touchend', function () { ty = null; });
+      s.addEventListener('scroll', function () { if (!dragging) paint(); }, { passive: true });
+      var im = s.querySelector('img');
+      if (im && !im.complete) im.addEventListener('load', paint);
+    });
     window.addEventListener('resize', paint);
-    if (sc.querySelector('img') && !sc.querySelector('img').complete) {
-      sc.querySelector('img').addEventListener('load', paint);
-    }
     paint();
+  });
+})();
+
+/* «Открыть целиком» — попап поверх страницы вместо новой вкладки.
+   WHY: увести человека из кейса на голый файл — потеря контекста. */
+(function () {
+  var links = [].slice.call(document.querySelectorAll('.mac__hint a[href]'));
+  if (!links.length) return;
+
+  var lb = document.createElement('div');
+  lb.className = 'lb lb--long';
+  lb.innerHTML = '<img alt=""><button class="lb__btn lb__close" aria-label="Закрыть">✕</button>';
+  document.body.appendChild(lb);
+  var big = lb.querySelector('img');
+
+  function close() {
+    lb.classList.remove('is-open');
+    document.body.style.overflow = '';
+    big.removeAttribute('src');
+  }
+  links.forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      big.src = a.getAttribute('href');
+      lb.scrollTop = 0;
+      lb.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  lb.querySelector('.lb__close').addEventListener('click', close);
+  lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && lb.classList.contains('is-open')) close();
+  });
+})();
+
+/* Табы над мокапом: переключают, какой макет лежит в окне браузера. */
+(function () {
+  [].slice.call(document.querySelectorAll('.mactabs')).forEach(function (tabs) {
+    var box = tabs.closest('.macbox');
+    if (!box) return;
+    var panes = [].slice.call(box.querySelectorAll('.macpane'));
+    var btns = [].slice.call(tabs.querySelectorAll('button'));
+    btns.forEach(function (btn, n) {
+      btn.addEventListener('click', function () {
+        btns.forEach(function (b, m) { b.setAttribute('aria-selected', m === n ? 'true' : 'false'); });
+        panes.forEach(function (p, m) { p.hidden = m !== n; });
+        var pane = panes[n];
+        var url = box.querySelector('.mac__url');
+        if (url && pane.dataset.url) url.textContent = pane.dataset.url;
+        var link = box.querySelector('.mac__hint a');
+        if (link && pane.dataset.full) link.setAttribute('href', pane.dataset.full);
+        window.dispatchEvent(new Event('resize'));
+      });
+    });
   });
 })();
