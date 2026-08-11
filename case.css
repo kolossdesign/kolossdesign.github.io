@@ -226,35 +226,83 @@ footer a{color:var(--accent)}
 .lb--long .lb__close{position:fixed}
 @media (max-width:640px){ .lb--long{padding:56px 8px} }
 
-/* Демо-мокап: браузер без прокрутки, внутри зацикленный сценарий «клик по ресторану».
-   WHY: показать взаимодействие, а не два статичных скрина рядом. */
-.demo .mac__screen{aspect-ratio:1440/1000;overflow:hidden}
+/* Демо-мокап: браузер без прокрутки, внутри зацикленный сценарий поиска и брони.
+   WHY: показать взаимодействие, а не набор статичных скринов. Чистый CSS, без видеофайла.
+   Координаты слоев — в процентах кадра 1440x1000, взяты из макета. */
+.demo .mac__screen{aspect-ratio:1440/1000;overflow:hidden;background:#fff}
 .demo__stack{position:absolute;inset:0}
-.demo__stack img{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover}
-.demo__after{opacity:0;animation:demoAfter 8s ease-in-out infinite}
-.demo__cursor{position:absolute;width:2.2%;z-index:3;left:58%;top:26%;
-  filter:drop-shadow(0 2px 4px rgba(0,0,0,.35));animation:demoCursor 8s ease-in-out infinite}
-.demo__tap{position:absolute;z-index:2;left:24%;top:67%;width:44px;height:44px;margin:-22px 0 0 -22px;
+.demo__stack > img{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover}
+.demo__after{opacity:0;animation:demoAfter 16s linear infinite}
+
+/* Колонка выдачи: окно с прокруткой ленты ресторанов */
+.demo__list{position:absolute;left:20.14%;top:0;width:24.31%;height:100%;
+  overflow:hidden;opacity:0;animation:demoAfter 16s linear infinite}
+.demo__list img{position:absolute;left:0;top:0;width:100%;display:block;
+  animation:demoList 16s ease-in-out infinite}
+
+/* Карточка ресторана: выезжает справа от колонки и сама прокручивается */
+.demo__sheet{position:absolute;left:44.44%;top:0;width:33.33%;height:100%;
+  overflow:hidden;background:#fff;box-shadow:0 0 24px rgba(0,0,0,.18);
+  transform:translateX(170%);animation:demoSheet 16s ease-in-out infinite}
+.demo__sheet img{position:absolute;left:0;top:0;width:100%;display:block;
+  animation:demoCard 16s ease-in-out infinite}
+
+.demo__cursor{position:absolute;width:2.2%;z-index:4;left:70%;top:22%;
+  filter:drop-shadow(0 2px 4px rgba(0,0,0,.35));animation:demoCursor 16s ease-in-out infinite}
+.demo__tap{position:absolute;z-index:3;width:44px;height:44px;margin:-22px 0 0 -22px;
   border-radius:50%;background:rgba(0,0,0,.18);opacity:0;transform:scale(.2);
-  animation:demoTap 8s ease-in-out infinite}
+  animation:demoTap 16s linear infinite}
+
+/* 0–8 курсор к полю поиска, 10 клик, 12 форма заполнена и появилась выдача,
+   16–30 лента едет вниз, 32–40 назад, 42 курсор на «Счастье», 46 клик,
+   48–54 выезжает карточка, 56–80 карточка прокручивается, 88–96 все назад. */
 @keyframes demoCursor{
-  0%{left:58%;top:26%}
-  22%{left:24%;top:67%}
-  26%{left:24%;top:67%;transform:scale(.88)}
-  30%{left:24%;top:67%;transform:scale(1)}
-  84%{left:24%;top:67%}
-  100%{left:58%;top:26%}
+  0%,4%{left:70%;top:22%}
+  10%{left:4.5%;top:16.5%}
+  12%{left:4.5%;top:16.5%;transform:scale(.85)}
+  14%{left:4.5%;top:16.5%;transform:scale(1)}
+  20%{left:4.5%;top:16.5%}
+  42%{left:30%;top:60%}
+  46%{left:30%;top:60%;transform:scale(.85)}
+  48%{left:30%;top:60%;transform:scale(1)}
+  86%{left:30%;top:60%}
+  100%{left:70%;top:22%}
 }
 @keyframes demoTap{
-  0%,24%{opacity:0;transform:scale(.2)}
-  26%{opacity:.5;transform:scale(.5)}
-  34%{opacity:0;transform:scale(1.4)}
-  100%{opacity:0;transform:scale(1.4)}
+  0%,10%{left:4.5%;top:16.5%;opacity:0;transform:scale(.2)}
+  12%{left:4.5%;top:16.5%;opacity:.45;transform:scale(.6)}
+  17%{left:4.5%;top:16.5%;opacity:0;transform:scale(1.4)}
+  45%{left:30%;top:60%;opacity:0;transform:scale(.2)}
+  47%{left:30%;top:60%;opacity:.45;transform:scale(.6)}
+  52%{left:30%;top:60%;opacity:0;transform:scale(1.4)}
+  100%{left:30%;top:60%;opacity:0;transform:scale(1.4)}
 }
 @keyframes demoAfter{
-  0%,28%{opacity:0}
-  34%,84%{opacity:1}
-  92%,100%{opacity:0}
+  0%,13%{opacity:0}
+  16%,88%{opacity:1}
+  93%,100%{opacity:0}
+}
+@keyframes demoList{
+  0%,18%{transform:translateY(0)}
+  32%{transform:translateY(-42%)}
+  40%,100%{transform:translateY(0)}
+}
+@keyframes demoSheet{
+  0%,48%{transform:translateX(170%)}
+  54%,86%{transform:translateX(0)}
+  92%,100%{transform:translateX(170%)}
+}
+@keyframes demoCard{
+  0%,58%{transform:translateY(0)}
+  80%,86%{transform:translateY(-34%)}
+  92%,100%{transform:translateY(0)}
+}
+@media (prefers-reduced-motion:reduce){
+  .demo__after,.demo__list,.demo__list img,.demo__sheet,.demo__sheet img,
+  .demo__cursor,.demo__tap{animation:none}
+  .demo__after,.demo__list{opacity:1}
+  .demo__sheet{transform:translateX(0)}
+  .demo__cursor,.demo__tap{display:none}
 }
 .demo__note{margin:12px 0 0;font-size:16px;color:var(--muted);text-align:center}
 @media (prefers-reduced-motion:reduce){
