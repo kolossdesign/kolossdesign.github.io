@@ -115,6 +115,39 @@
       if (im && !im.complete) im.addEventListener('load', paint);
     });
     window.addEventListener('resize', paint);
+
+    /* Подсказка: когда блок появляется в кадре, макет сам проматывается вниз
+       и возвращается назад — вместе с бегунком. Один раз на мокап. */
+    var hinted = false;
+    function preview() {
+      if (hinted) return;
+      hinted = true;
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var s = sc();
+      var to = Math.min(maxScroll(), Math.max(120, s.clientHeight * 0.45));
+      var t0 = null, dur = 1500;
+      function step(ts) {
+        if (t0 === null) t0 = ts;
+        var t = Math.min(1, (ts - t0) / dur);
+        // вниз до середины анимации, потом обратно; плавно на концах
+        var k = t < 0.5 ? t / 0.5 : (1 - t) / 0.5;
+        k = k * k * (3 - 2 * k);
+        s.scrollTop = to * k;
+        paint();
+        if (t < 1) requestAnimationFrame(step);
+        else { s.scrollTop = 0; paint(); }
+      }
+      requestAnimationFrame(step);
+    }
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { preview(); io.disconnect(); }
+        });
+      }, { threshold: 0.5 });
+      io.observe(box);
+    }
+
     paint();
   });
 })();
