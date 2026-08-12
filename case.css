@@ -94,6 +94,8 @@ li{margin:0 0 10px}
 
 /* Галерея с увеличением по клику */
 .shots.zoomable img{cursor:zoom-in}
+/* Одна картинка в ряду: на десктопе она и так во всю ширину — увеличивать нечего */
+@media (min-width:641px){ .shots.zoomable.one-img img{cursor:default} }
 .lb{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.9);
   display:none;align-items:center;justify-content:center;padding:40px}
 .lb.is-open{display:flex}

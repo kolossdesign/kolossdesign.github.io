@@ -35,10 +35,16 @@
     big.removeAttribute('src');
   }
 
+  function mobile() { return window.matchMedia('(max-width: 640px)').matches; }
   groups.forEach(function (g) {
     var list = [].slice.call(g.querySelectorAll('img'));
+    var single = g.classList.contains('one-img');
     list.forEach(function (im, n) {
-      im.addEventListener('click', function () { imgs = list; open(n); });
+      im.addEventListener('click', function () {
+        // одиночная картинка на десктопе уже показана во всю ширину — не увеличиваем
+        if (single && !mobile()) return;
+        imgs = list; open(n);
+      });
     });
   });
   lb.querySelector('.lb__prev').addEventListener('click', function (e) { e.stopPropagation(); show(i - 1); });
@@ -100,16 +106,8 @@
       if (e.target !== thumb) setFromPoint(e);
     });
 
-    // на тач-устройствах макет по-прежнему листается пальцем
+    // макет двигается только ползунком — и на десктопе, и на тач-устройствах
     [].slice.call(box.querySelectorAll('.mac__scroll')).forEach(function (s) {
-      var ty = null;
-      s.addEventListener('touchstart', function (e) { ty = e.touches[0].clientY; }, { passive: true });
-      s.addEventListener('touchmove', function (e) {
-        if (ty === null) return;
-        var y = e.touches[0].clientY;
-        s.scrollTop += (ty - y); ty = y; paint();
-      }, { passive: true });
-      s.addEventListener('touchend', function () { ty = null; });
       s.addEventListener('scroll', function () { if (!dragging) paint(); }, { passive: true });
       var im = s.querySelector('img');
       if (im && !im.complete) im.addEventListener('load', paint);
