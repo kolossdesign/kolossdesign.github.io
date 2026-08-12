@@ -130,7 +130,12 @@ li{margin:0 0 10px}
 .todo b{color:#5d4500}
 
 /* Возврат ко всем кейсам внизу страницы */
-.allcases{border-top:1px solid var(--line);margin:96px 0 0;padding:40px 80px 80px;text-align:center}
+.allcases{border-top:1px solid var(--line);margin:96px 0 0;padding:40px 80px 80px;
+  display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.allcases__next{margin-left:auto}
+.allcases__next b{font-weight:700}
+@media (max-width:640px){ .allcases{flex-direction:column;align-items:flex-start;gap:18px}
+  .allcases__next{margin-left:0} }
 @media (max-width:960px){ .allcases{padding:40px 40px 80px} }
 @media (max-width:640px){ .allcases{padding:32px 16px 64px} }
 .allcases a{display:inline-flex;align-items:center;gap:10px;font-size:20px;
@@ -221,10 +226,10 @@ footer a{color:var(--accent)}
 @media (max-width:640px){ .mactabs button{font-size:14px;padding:8px 14px} }
 
 /* Попап «Открыть целиком»: длинный макет со своей прокруткой */
-.lb--long{align-items:flex-start;overflow-y:auto;padding:40px 24px}
-.lb--long img{max-height:none;width:auto;max-width:1100px;margin:0 auto;border-radius:10px}
+.lb--long{align-items:flex-start;overflow-y:auto;overflow-x:hidden;padding:40px 24px}
+.lb--long img{max-height:none;width:100%;max-width:1100px;height:auto;margin:0 auto;border-radius:10px}
 .lb--long .lb__close{position:fixed}
-@media (max-width:640px){ .lb--long{padding:56px 8px} }
+@media (max-width:640px){ .lb--long{padding:64px 8px 24px} .lb--long img{border-radius:6px} }
 
 /* Демо-мокап: браузер без прокрутки, внутри зацикленный сценарий поиска и брони.
    WHY: показать взаимодействие, а не набор статичных скринов. Чистый CSS, без видеофайла.
