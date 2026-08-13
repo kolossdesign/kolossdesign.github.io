@@ -37,6 +37,7 @@ h1{font-size:64px;line-height:1.06;font-weight:700;letter-spacing:-0.02em;margin
 
 /* Роль → зона ответственности → этапы: один кегль, строки идут вплотную */
 .role,.scope,.stages{font-size:20px;line-height:1.35;color:var(--ink);margin:0}
+.role,.scope{margin:0 0 16px}
 .role{font-weight:700}
 .scope,.stages{font-weight:400}
 .stages{margin-bottom:40px}
