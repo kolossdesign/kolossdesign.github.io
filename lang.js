@@ -46,3 +46,19 @@
   if (!wantsRu && !isEn) location.replace(enUrl);
   if (wantsRu && isEn) location.replace(ruUrl);
 })();
+
+
+/* Возврат с кейса на главную: доскроллили до блока — убираем якорь из адреса.
+   WHY: #stenn в строке браузера выглядит как отдельная страница, хотя это блок главной. */
+(function () {
+  if (!location.hash) return;
+  var id = location.hash.slice(1);
+  if (!/^[a-z]+$/.test(id) || !document.getElementById(id)) return;
+  function clean() {
+    if (!location.hash) return;
+    try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {}
+  }
+  // ждем, пока браузер сам доскроллит до якоря, и только потом чистим адрес
+  window.addEventListener('load', function () { setTimeout(clean, 400); });
+  setTimeout(clean, 1500);
+})();
