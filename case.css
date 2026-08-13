@@ -36,7 +36,8 @@ h1{font-size:64px;line-height:1.06;font-weight:700;letter-spacing:-0.02em;margin
 @media (max-width:640px){ h1{font-size:36px} }
 
 .role{font-size:20px;font-weight:700;margin:0 0 6px}
-.stages{font-size:20px;color:var(--ink);margin:0 0 40px}
+.stages{font-size:20px;color:var(--ink);margin:0 0 8px}
+.scope{font-size:20px;font-weight:400;color:var(--ink);margin:0 0 40px}
 hr{border:0;border-top:1px solid var(--line);margin:40px 0}
 
 .intro{display:flex;gap:40px;align-items:flex-start;margin:0 0 56px}
@@ -82,11 +83,10 @@ li{margin:0 0 10px}
 .shots.cols-4{grid-template-columns:repeat(4,1fr)}
 .shot{display:flex;flex-direction:column;gap:8px;margin:0}
 .shot__cap{font-size:16px;line-height:1.3;color:var(--muted)}
-.shots img{width:100%;display:block;border-radius:24px;background:#eef0f3}
+.shots img{width:100%;display:block;border-radius:16px;background:#eef0f3}
 .shots--line img{border:1px solid #dcdfe5}
 @media (max-width:960px){ .shots{padding:0 40px;gap:16px} .shots.cols-3,.shots.cols-4{grid-template-columns:repeat(2,1fr)} }
-@media (max-width:640px){ .shots{padding:0 16px;grid-template-columns:1fr!important;gap:16px}
-  .shots img{border-radius:16px} }
+@media (max-width:640px){ .shots{padding:0 16px;grid-template-columns:1fr!important;gap:16px} }
 /* Картинка-схема на светлом фоне: не должна упираться в края карточки */
 .shots--pad img{padding:40px;background:#fff;border:1px solid var(--line)}
 .shots--pad.shots--plain img{border:0;background:#e3f2ff}
@@ -151,8 +151,8 @@ footer a{color:var(--accent)}
 .marquee{width:100vw;position:relative;left:50%;transform:translateX(-50vw);
   overflow:hidden;margin:32px 0 8px}
 .marquee__track{display:flex;gap:20px;width:max-content;will-change:transform}
-.marquee__track img{height:688px;width:auto;flex:none;display:block;border-radius:24px;background:transparent}
-@media (max-width:980px){ .marquee__track img{height:375px;border-radius:16px} }
+.marquee__track img{height:688px;width:auto;flex:none;display:block;border-radius:16px;background:transparent}
+@media (max-width:980px){ .marquee__track img{height:375px} }
 
 /* Мокап браузера с прокруткой длинного макета внутри окна.
    WHY: страница 1440×4959 в полный рост ломает ритм страницы – ее невозможно пролистать.
