@@ -35,9 +35,10 @@ h1{font-size:64px;line-height:1.06;font-weight:700;letter-spacing:-0.02em;margin
 @media (max-width:960px){ h1{font-size:44px} }
 @media (max-width:640px){ h1{font-size:36px} }
 
-.role{font-size:20px;font-weight:700;margin:0 0 6px}
-.stages{font-size:20px;color:var(--ink);margin:0 0 8px}
-.scope{font-size:20px;font-weight:400;color:var(--ink);margin:0 0 40px}
+/* Роль → зона ответственности → этапы: один кегль, без просветов между строками */
+.role{font-size:20px;line-height:1.45;font-weight:700;margin:0}
+.scope{font-size:20px;line-height:1.45;font-weight:400;color:var(--ink);margin:0}
+.stages{font-size:20px;line-height:1.45;font-weight:400;color:var(--ink);margin:0 0 40px}
 hr{border:0;border-top:1px solid var(--line);margin:40px 0}
 
 .intro{display:flex;gap:40px;align-items:flex-start;margin:0 0 56px}
