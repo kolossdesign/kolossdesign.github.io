@@ -1,7 +1,7 @@
 # Portfolio redesign
 
-An independent alternative to https://kolossdesign.github.io/.
-The original website is not modified.
+The redesigned version of https://kolossdesign.github.io/.
+The previous live version is preserved in a backup-before-redesign branch.
 
 ## Changes
 
@@ -13,7 +13,7 @@ The original website is not modified.
 - Added an explicit contribution summary to Siberian Wellness.
 - Replaced automatic language redirects with manual language selection.
 - Made links work on a GitHub Pages project subpath.
-- Removed the original analytics counter from the independent copy so experimental traffic does not mix with the original site.
+- Preserved the existing Yandex Metrika counter when promoting the redesign to the primary site.
 
 No new research findings, testimonials, dates, team sizes or performance figures were invented. Measurement methodology, exact availability and an email address require the portfolio owner's input.
 
