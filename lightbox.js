@@ -1,5 +1,5 @@
 /* Увеличение картинок по клику в блоках .shots.zoomable.
-   WHY: страницы статические, без сборки — один самодостаточный файл без зависимостей. */
+   WHY: страницы статические, без сборки – один самодостаточный файл без зависимостей. */
 (function () {
   var groups = [].slice.call(document.querySelectorAll('.shots.zoomable'));
   if (!groups.length) return;
@@ -16,7 +16,7 @@
 
   var big = lb.querySelector('img');
   var count = lb.querySelector('.lb__count');
-  var imgs = [];      // текущая галерея — только картинки одного блока
+  var imgs = [];      // текущая галерея – только картинки одного блока
   var i = 0;
 
   function show(n) {
@@ -41,7 +41,7 @@
     var single = g.classList.contains('one-img');
     list.forEach(function (im, n) {
       im.addEventListener('click', function () {
-        // одиночная картинка на десктопе уже показана во всю ширину — не увеличиваем
+        // одиночная картинка на десктопе уже показана во всю ширину – не увеличиваем
         if (single && !mobile()) return;
         imgs = list; open(n);
       });
@@ -50,7 +50,7 @@
   lb.querySelector('.lb__prev').addEventListener('click', function (e) { e.stopPropagation(); show(i - 1); });
   lb.querySelector('.lb__next').addEventListener('click', function (e) { e.stopPropagation(); show(i + 1); });
   lb.querySelector('.lb__close').addEventListener('click', close);
-  // клик по фону закрывает, клик по самой картинке — нет
+  // клик по фону закрывает, клик по самой картинке – нет
   lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
   document.addEventListener('keydown', function (e) {
     if (!lb.classList.contains('is-open')) return;
@@ -106,7 +106,7 @@
       if (e.target !== thumb) setFromPoint(e);
     });
 
-    // макет двигается только ползунком — и на десктопе, и на тач-устройствах
+    // макет двигается только ползунком – и на десктопе, и на тач-устройствах
     [].slice.call(box.querySelectorAll('.mac__scroll')).forEach(function (s) {
       s.addEventListener('scroll', function () { if (!dragging) paint(); }, { passive: true });
       var im = s.querySelector('img');
@@ -115,7 +115,7 @@
     window.addEventListener('resize', paint);
 
     /* Подсказка: когда блок появляется в кадре, макет сам проматывается вниз
-       и возвращается назад — вместе с бегунком. Один раз на мокап. */
+       и возвращается назад – вместе с бегунком. Один раз на мокап. */
     var hinted = false;
     function preview() {
       if (hinted) return;
@@ -150,8 +150,8 @@
   });
 })();
 
-/* «Открыть целиком» — попап поверх страницы вместо новой вкладки.
-   WHY: увести человека из кейса на голый файл — потеря контекста. */
+/* «Открыть целиком» – попап поверх страницы вместо новой вкладки.
+   WHY: увести человека из кейса на голый файл – потеря контекста. */
 (function () {
   var links = [].slice.call(document.querySelectorAll('.mac__hint a[href]'));
   if (!links.length) return;

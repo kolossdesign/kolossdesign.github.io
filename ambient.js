@@ -1,0 +1,1 @@
+(()=>{const hero=document.querySelector('.hero');if(!hero)return;const update=()=>{const bottom=hero.offsetTop+hero.offsetHeight;document.documentElement.style.setProperty('--intro-fade-height',`${bottom+180}px`)};update();new ResizeObserver(update).observe(hero);window.addEventListener('resize',update,{passive:true})})();

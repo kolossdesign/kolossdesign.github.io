@@ -98,7 +98,7 @@ li{margin:0 0 10px}
 
 /* Галерея с увеличением по клику */
 .shots.zoomable img{cursor:zoom-in}
-/* Одна картинка в ряду: на десктопе она и так во всю ширину — увеличивать нечего */
+/* Одна картинка в ряду: на десктопе она и так во всю ширину – увеличивать нечего */
 @media (min-width:641px){ .shots.zoomable.one-img img{cursor:default} }
 .lb{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.9);
   display:none;align-items:center;justify-content:center;padding:40px}
@@ -240,7 +240,7 @@ footer a{color:var(--accent)}
 
 /* Демо-мокап: браузер без прокрутки, внутри зацикленный сценарий поиска и брони.
    WHY: показать взаимодействие, а не набор статичных скринов. Чистый CSS, без видеофайла.
-   Координаты слоев — в процентах кадра 1440x1000, взяты из макета. */
+   Координаты слоев – в процентах кадра 1440x1000, взяты из макета. */
 .demo .mac__screen{aspect-ratio:1440/1000;overflow:hidden;background:#fff}
 .demo__stack{position:absolute;inset:0}
 .demo__stack > img{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover}
@@ -251,7 +251,7 @@ footer a{color:var(--accent)}
   overflow:hidden;opacity:0;animation:demoAfter 16s linear infinite}
 .demo__list img{position:absolute;left:0;top:0;width:100%;display:block;
   animation:demoList 16s ease-in-out infinite}
-/* Второй слой ленты — карточка «Счастье» в нажатом состоянии, включается по клику */
+/* Второй слой ленты – карточка «Счастье» в нажатом состоянии, включается по клику */
 .demo__list .demo__sel{opacity:0;animation:demoList 16s ease-in-out infinite, demoSel 16s linear infinite}
 
 /* Карточка ресторана: выезжает справа от колонки и сама прокручивается */
@@ -303,7 +303,7 @@ footer a{color:var(--accent)}
   32%{transform:translateY(-42%)}
   40%,100%{transform:translateY(0)}
 }
-/* Лента гаснет одновременно с карточкой — цикл начинается с чистого экрана */
+/* Лента гаснет одновременно с карточкой – цикл начинается с чистого экрана */
 @keyframes demoSel{
   0%,45.5%{opacity:0}
   46%,88%{opacity:1}
