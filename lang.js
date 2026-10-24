@@ -13,6 +13,7 @@
   return nav;
  }
  const top=document.querySelector('.wrap>.edge');
- if(top){top.classList.add('case-header');top.appendChild(control())}
+ if(top&&!document.querySelector('.site-header')){top.classList.add('case-header');top.appendChild(control())}
+ document.addEventListener('click',event=>{const a=event.target.closest('.header-lang a');if(a){try{localStorage.setItem('portfolio-language',a.textContent.trim().toLowerCase())}catch{}}});
  const footer=document.createElement('footer');footer.className='case-language-footer';footer.appendChild(control());document.body.appendChild(footer);
 })();
