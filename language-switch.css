@@ -1,0 +1,13 @@
+/* Shared language control for homepages and case studies. */
+.lang,.langsw{display:inline-flex;align-items:center;gap:2px;white-space:nowrap;font-family:inherit;line-height:1.4}
+.lang a,.langsw a{display:block;padding:4px 5px;font-size:13px;font-weight:400;color:#62675e;text-decoration:none;border-radius:6px}
+.lang a[aria-current],.langsw a[aria-current]{background:#ffffff80;color:#20231f;font-weight:700;border-radius:6px}
+.lang a:hover,.langsw a:hover{color:#20231f;background:#ffffff60}
+.header-lang{border:0;padding:0}
+.langsw{position:static;border:0;padding:0;background:none;box-shadow:none;z-index:auto}
+.footer,.case-language-footer{display:flex;justify-content:flex-end;align-items:center}
+.case-header{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.case-header>.langsw{margin-top:40px}
+.case-language-footer{padding:20px 80px 35px}
+@media(max-width:960px){.case-language-footer{padding-inline:40px}}
+@media(max-width:640px){.lang a,.langsw a{font-size:12px;padding:4px}.case-language-footer{padding-inline:20px}}
