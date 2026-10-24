@@ -116,6 +116,12 @@ body{position:relative;isolation:isolate}
 @media(min-width:641px){.navlinks{line-height:24px}.hero{padding-top:calc(clamp(56px,5vw,100px) + 24px - 50.5px)}}
 @media(max-width:640px){.hero{padding-top:66px}}
 /* Increase the hero headline by 20% at every breakpoint. */
-.hero h1{font-size:clamp(52.8px,6.24vw,132px)}
-@media(max-width:760px){.hero h1{font-size:52.8px}}
-@media(max-width:640px){.hero h1{font-size:50.4px}}
+.hero h1{font-size:clamp(50.16px,5.928vw,125.4px)}
+@media(max-width:760px){.hero h1{font-size:50.16px}}
+@media(max-width:640px){.hero h1{font-size:47.88px}}
+
+.rotating-word{display:inline-block;min-width:.04em;min-height:1.06em;white-space:nowrap;position:relative}
+.rotating-word.is-typing::after{content:"";position:absolute;right:-5px;top:.12em;width:2px;height:.85em;background:#9c5c91;animation:typing-caret 1s steps(1) infinite}
+@keyframes typing-caret{0%,49%{opacity:1}50%,100%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.rotating-word::after{display:none}}
+.nav{border-bottom:0}
