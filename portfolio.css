@@ -125,3 +125,7 @@ body{position:relative;isolation:isolate}
 @keyframes typing-caret{0%,49%{opacity:1}50%,100%{opacity:0}}
 @media(prefers-reduced-motion:reduce){.rotating-word::after{display:none}}
 .nav{border-bottom:0}
+
+/* Match the contact panel to case studies; carry a pale lime into the hero. */
+.contact{background:#dcf79c;border-color:#c9e68f}
+.page-ambient{background-image:linear-gradient(90deg,#c7b4f9 0%,#e9b6cd 16.667%,#efbe89 33.333%,#eee5ad 50%,#dcf79c 66.667%,#bde5d6 83.333%,#c7b4f9 100%);background-size:400% 100%}
