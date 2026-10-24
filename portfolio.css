@@ -143,3 +143,5 @@ body{position:relative;isolation:isolate}
 .header-lang a[aria-current]{background:#ffffff80;border-radius:6px}
 @media(max-width:640px){.navlinks{gap:10px}.header-lang{margin-left:auto;border-left:0;padding-left:0}.header-lang a{font-size:12px;padding:4px}}
 @media(min-width:761px){.page-ambient{animation-duration:8s}}
+
+html:not(.keyboard-navigation) .project:focus-visible{outline:none}
