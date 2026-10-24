@@ -84,3 +84,31 @@ body{position:relative;isolation:isolate}
 @keyframes intro-linear{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 @media(prefers-reduced-motion:reduce){.page-ambient{animation:none}}
 @media(min-width:761px){.button{font-size:16px}}
+
+/* A personal introduction, with a single experience summary. */
+.nav{min-height:124px;gap:28px}
+.identity{display:flex;align-items:center;gap:18px;white-space:normal;letter-spacing:0}
+.identity-photo{width:64px;height:64px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.identity-text{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 12px;line-height:1.3}
+.identity-name{font-size:20px;font-weight:600;letter-spacing:-.4px}
+.identity-role{font-size:17px;font-weight:400;color:var(--muted)}
+.identity-role::before{content:"/";margin-right:12px;color:#92948d}
+.hero{display:block;padding-block:clamp(56px,6vw,120px) clamp(56px,5vw,100px)}
+.hero h1{max-width:18em;margin-bottom:32px}
+.introcopy{max-width:48em;font-size:clamp(18px,1.5vw,28px);line-height:1.5}
+.actions{margin-top:36px}
+@media(max-width:1050px){.identity-text{display:block}.identity-role{display:block;margin-top:4px}.identity-role::before{display:none}.identity-name{font-size:18px}.identity-role{font-size:15px}.navlinks{gap:20px}}
+@media(max-width:640px){.nav{flex-wrap:wrap;gap:20px;padding-block:22px;min-height:0}.identity{gap:14px;width:100%}.identity-photo{width:52px;height:52px}.identity-name{font-size:18px}.identity-role{font-size:15px}.navlinks{width:100%;justify-content:flex-end;font-size:14px;gap:24px}.navlinks .optional{display:block}.hero{padding-block:44px 52px}.hero h1{font-size:42px;margin-bottom:24px}.introcopy{font-size:18px}.actions{margin-top:28px}}
+
+.contact-action{margin-top:32px}
+
+.visual picture{display:block;width:100%;height:100%;min-width:0}
+@media(max-width:760px){.visual,.project:first-child .visual{aspect-ratio:3/4;padding:0;border-radius:22px}.visual picture img{width:100%;height:100%;object-fit:cover;border-radius:0;box-shadow:none}}
+
+@media(max-width:640px){.nav{border-bottom:0;gap:18px;padding-block:20px 10px}.navlinks{justify-content:flex-start;gap:24px}.hero{padding-top:24px}}
+/* Keep each caption with its own cover and separate consecutive projects. */
+.featured{row-gap:clamp(72px,6vw,120px)}
+.projectmeta{margin-top:16px}
+@media(max-width:760px){.featured{row-gap:64px}.projectmeta{margin-top:16px}.project h3{margin-bottom:10px}.project .tags{margin-top:14px}}
+.projectmeta{font-size:12px;font-weight:600;line-height:1.4;letter-spacing:1.6px;text-transform:uppercase;color:var(--ink);margin-top:16px;margin-bottom:12px}
+.page-ambient{animation-duration:10s;background-size:200% 100%}
