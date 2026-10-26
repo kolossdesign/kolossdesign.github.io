@@ -145,3 +145,4 @@ body{position:relative;isolation:isolate}
 @media(min-width:761px){.page-ambient{animation-duration:8s}}
 
 html:not(.keyboard-navigation) .project:focus-visible{outline:none}
+@media(min-width:761px){.projectmeta{margin-top:24px}}
