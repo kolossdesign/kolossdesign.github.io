@@ -111,7 +111,7 @@ body{position:relative;isolation:isolate}
 .projectmeta{margin-top:16px}
 @media(max-width:760px){.featured{row-gap:64px}.projectmeta{margin-top:16px}.project h3{margin-bottom:10px}.project .tags{margin-top:14px}}
 .projectmeta{font-size:12px;font-weight:600;line-height:1.4;letter-spacing:1.6px;text-transform:uppercase;color:var(--ink);margin-top:16px;margin-bottom:12px}
-.page-ambient{animation-duration:11s;background-size:200% 100%}
+.page-ambient{animation-duration:8s;background-size:200% 100%}
 /* Match the gaps above and below the hero content. */
 @media(min-width:641px){.navlinks{line-height:24px}.hero{padding-top:calc(clamp(56px,5vw,100px) + 24px - 50.5px)}}
 @media(max-width:640px){.hero{padding-top:66px}}
