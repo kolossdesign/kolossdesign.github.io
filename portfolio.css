@@ -111,7 +111,7 @@ body{position:relative;isolation:isolate}
 .projectmeta{margin-top:16px}
 @media(max-width:760px){.featured{row-gap:64px}.projectmeta{margin-top:16px}.project h3{margin-bottom:10px}.project .tags{margin-top:14px}}
 .projectmeta{font-size:12px;font-weight:600;line-height:1.4;letter-spacing:1.6px;text-transform:uppercase;color:var(--ink);margin-top:16px;margin-bottom:12px}
-.page-ambient{animation-duration:8s;background-size:200% 100%}
+.page-ambient{animation-duration:10s;background-size:200% 100%}
 /* Match the gaps above and below the hero content. */
 @media(min-width:641px){.navlinks{line-height:24px}.hero{padding-top:calc(clamp(56px,5vw,100px) + 24px - 50.5px)}}
 @media(max-width:640px){.hero{padding-top:66px}}
@@ -142,7 +142,48 @@ body{position:relative;isolation:isolate}
 .header-lang a{padding:4px 5px;font-size:13px}
 .header-lang a[aria-current]{background:#ffffff80;border-radius:6px}
 @media(max-width:640px){.navlinks{gap:10px}.header-lang{margin-left:auto;border-left:0;padding-left:0}.header-lang a{font-size:12px;padding:4px}}
-@media(min-width:761px){.page-ambient{animation-duration:8s}}
+@media(min-width:761px){.page-ambient{animation-duration:10s}}
 
 html:not(.keyboard-navigation) .project:focus-visible{outline:none}
 @media(min-width:761px){.projectmeta{margin-top:24px}}
+/* Additional violet stop in the animated pastel palette. */
+.page-ambient{background-image:linear-gradient(60deg,#c7b4f9 0%,#aa8ee6 12.5%,#e9b6cd 25%,#efbe89 37.5%,#eee5ad 50%,#dcf79c 62.5%,#72e17b 75%,#bde5d6 87.5%,#c7b4f9 100%)}
+
+/* A continuous palette cycle: the final frame matches the first, without reversal. */
+@property --palette-0{syntax:"<color>";inherits:false;initial-value:#c7b4f9}
+@property --palette-1{syntax:"<color>";inherits:false;initial-value:#aa8ee6}
+@property --palette-2{syntax:"<color>";inherits:false;initial-value:#e9b6cd}
+@property --palette-3{syntax:"<color>";inherits:false;initial-value:#efbe89}
+@property --palette-4{syntax:"<color>";inherits:false;initial-value:#eee5ad}
+@property --palette-5{syntax:"<color>";inherits:false;initial-value:#dcf79c}
+@property --palette-6{syntax:"<color>";inherits:false;initial-value:#72e17b}
+@property --palette-7{syntax:"<color>";inherits:false;initial-value:#bde5d6}
+.page-ambient{background-image:linear-gradient(60deg,var(--palette-0) 0%,var(--palette-1) 12.5%,var(--palette-2) 25%,var(--palette-3) 37.5%,var(--palette-4) 50%,var(--palette-5) 62.5%,var(--palette-6) 75%,var(--palette-7) 87.5%,var(--palette-0) 100%);background-size:100% 100%;background-position:center;animation-name:palette-cycle;animation-timing-function:linear;animation-direction:normal;animation-iteration-count:infinite}
+@keyframes palette-cycle{
+0%{--palette-0:#c7b4f9;--palette-1:#aa8ee6;--palette-2:#e9b6cd;--palette-3:#efbe89;--palette-4:#eee5ad;--palette-5:#dcf79c;--palette-6:#72e17b;--palette-7:#bde5d6;}
+12.5%{--palette-0:#bde5d6;--palette-1:#c7b4f9;--palette-2:#aa8ee6;--palette-3:#e9b6cd;--palette-4:#efbe89;--palette-5:#eee5ad;--palette-6:#dcf79c;--palette-7:#72e17b;}
+25%{--palette-0:#72e17b;--palette-1:#bde5d6;--palette-2:#c7b4f9;--palette-3:#aa8ee6;--palette-4:#e9b6cd;--palette-5:#efbe89;--palette-6:#eee5ad;--palette-7:#dcf79c;}
+37.5%{--palette-0:#dcf79c;--palette-1:#72e17b;--palette-2:#bde5d6;--palette-3:#c7b4f9;--palette-4:#aa8ee6;--palette-5:#e9b6cd;--palette-6:#efbe89;--palette-7:#eee5ad;}
+50%{--palette-0:#eee5ad;--palette-1:#dcf79c;--palette-2:#72e17b;--palette-3:#bde5d6;--palette-4:#c7b4f9;--palette-5:#aa8ee6;--palette-6:#e9b6cd;--palette-7:#efbe89;}
+62.5%{--palette-0:#efbe89;--palette-1:#eee5ad;--palette-2:#dcf79c;--palette-3:#72e17b;--palette-4:#bde5d6;--palette-5:#c7b4f9;--palette-6:#aa8ee6;--palette-7:#e9b6cd;}
+75%{--palette-0:#e9b6cd;--palette-1:#efbe89;--palette-2:#eee5ad;--palette-3:#dcf79c;--palette-4:#72e17b;--palette-5:#bde5d6;--palette-6:#c7b4f9;--palette-7:#aa8ee6;}
+87.5%{--palette-0:#aa8ee6;--palette-1:#e9b6cd;--palette-2:#efbe89;--palette-3:#eee5ad;--palette-4:#dcf79c;--palette-5:#72e17b;--palette-6:#bde5d6;--palette-7:#c7b4f9;}
+100%{--palette-0:#c7b4f9;--palette-1:#aa8ee6;--palette-2:#e9b6cd;--palette-3:#efbe89;--palette-4:#eee5ad;--palette-5:#dcf79c;--palette-6:#72e17b;--palette-7:#bde5d6;}
+}
+@media(prefers-reduced-motion:reduce){.page-ambient{animation:none}}
+/* Reference-inspired spectrum: violet, pink, peach and vivid green. */
+@keyframes reference-spectrum{
+0%,100%{--palette-0:#7451bd;--palette-1:#b66ac4;--palette-2:#f3a5cb;--palette-3:#f3c6a8;--palette-4:#dbe97e;--palette-5:#78e86b;--palette-6:#36c943;--palette-7:#9edcba}
+12.5%{--palette-0:#9edcba;--palette-1:#7451bd;--palette-2:#b66ac4;--palette-3:#f3a5cb;--palette-4:#f3c6a8;--palette-5:#dbe97e;--palette-6:#78e86b;--palette-7:#36c943}
+25%{--palette-0:#36c943;--palette-1:#9edcba;--palette-2:#7451bd;--palette-3:#b66ac4;--palette-4:#f3a5cb;--palette-5:#f3c6a8;--palette-6:#dbe97e;--palette-7:#78e86b}
+37.5%{--palette-0:#78e86b;--palette-1:#36c943;--palette-2:#9edcba;--palette-3:#7451bd;--palette-4:#b66ac4;--palette-5:#f3a5cb;--palette-6:#f3c6a8;--palette-7:#dbe97e}
+50%{--palette-0:#dbe97e;--palette-1:#78e86b;--palette-2:#36c943;--palette-3:#9edcba;--palette-4:#7451bd;--palette-5:#b66ac4;--palette-6:#f3a5cb;--palette-7:#f3c6a8}
+62.5%{--palette-0:#f3c6a8;--palette-1:#dbe97e;--palette-2:#78e86b;--palette-3:#36c943;--palette-4:#9edcba;--palette-5:#7451bd;--palette-6:#b66ac4;--palette-7:#f3a5cb}
+75%{--palette-0:#f3a5cb;--palette-1:#f3c6a8;--palette-2:#dbe97e;--palette-3:#78e86b;--palette-4:#36c943;--palette-5:#9edcba;--palette-6:#7451bd;--palette-7:#b66ac4}
+87.5%{--palette-0:#b66ac4;--palette-1:#f3a5cb;--palette-2:#f3c6a8;--palette-3:#dbe97e;--palette-4:#78e86b;--palette-5:#36c943;--palette-6:#9edcba;--palette-7:#7451bd}
+}
+.page-ambient{opacity:.52;background-image:linear-gradient(60deg,var(--palette-0) 0%,var(--palette-1) 14%,var(--palette-2) 28%,var(--palette-3) 43%,var(--palette-4) 57%,var(--palette-5) 71%,var(--palette-6) 86%,var(--palette-7) 100%);animation-name:reference-spectrum}
+@media(prefers-reduced-motion:reduce){.page-ambient{animation:none;--palette-0:#7451bd;--palette-1:#b66ac4;--palette-2:#f3a5cb;--palette-3:#f3c6a8;--palette-4:#dbe97e;--palette-5:#78e86b;--palette-6:#36c943;--palette-7:#9edcba}}
+/* Show a wider section of each colour instead of the full spectrum at once. */
+.page-ambient{background-size:250% 250%;background-position:50% 50%}
+.page-ambient{opacity:.34}
