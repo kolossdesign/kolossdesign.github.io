@@ -1,0 +1,24 @@
+.availability{max-width:750px;margin:20px 0 0;font-size:16px;line-height:1.5;color:var(--ink,#20231f)}
+.project .project-outcome{font-size:15px;line-height:1.45;font-weight:600;color:var(--ink,#20231f);margin:14px 0 0;max-width:620px}
+.case-facts{display:flex;flex-wrap:wrap;gap:20px 48px;margin:24px 0 18px}
+.case-facts>div{max-width:100%}.case-facts dt{font-size:13px;color:var(--muted,#62675e);margin-bottom:5px}
+.case-facts dd{font-size:16px;line-height:1.45;margin:0;color:var(--ink,#20231f)}
+@media(max-width:760px){.availability{font-size:15px;margin-top:18px}.project .project-outcome{font-size:14px}.case-facts{gap:16px 28px;margin-top:20px}.case-facts dd{font-size:15px}}
+.case-result{font-size:18px;line-height:1.5;max-width:850px;margin:20px 0;color:var(--ink,#20231f)}
+.project .summary .outcome-inline{font-weight:400;color:inherit}
+.case-stages{display:flex;align-items:baseline;flex-wrap:wrap;gap:10px;margin:20px 0 26px;font-size:14px;line-height:1.4}
+.case-stages-label{color:var(--muted,#62675e)}
+.case-stages ul{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0}
+.case-stages li{list-style:none;padding:6px 12px;margin:0;border:1px solid #ccd2c4;border-radius:100px;font-size:14px;line-height:1.4;color:var(--ink,#20231f)}
+.case-stages li:before{content:none}
+@media(max-width:640px){.case-stages{gap:8px;margin-block:18px 24px}.case-stages li{font-size:13px;padding:6px 10px}}
+/* Two consistent text levels throughout the case introduction. */
+.case-facts,.wrap .scope,.case-result,.case-stages{font-family:inherit;font-weight:400}
+.case-facts dd,.wrap .scope,.case-result{font-size:16px;line-height:1.5;font-weight:400}
+.case-facts dt,.case-stages li{font-size:14px;line-height:1.5;font-weight:400}
+/* Match case metadata and introductory copy to the full article text. */
+.wrap{--case-copy-size:20px}
+.case-facts dd,.wrap .scope,.wrap .case-result,.wrap .intro p,.wrap .lead,.wrap .comparison li,.wrap .contribution p{font-size:var(--case-copy-size);line-height:1.45;font-weight:400}
+@media(max-width:640px){.wrap{--case-copy-size:18px}}
+.wrap{--case-copy-size:18px;font-size:18px}
+@media(max-width:640px){.wrap{--case-copy-size:16px;font-size:16px}}
