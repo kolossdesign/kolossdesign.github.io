@@ -1,0 +1,83 @@
+/* Each cover is a stage for the actual product, rather than a bordered image. */
+.featured .project .visual.cover-scene{position:relative;isolation:isolate;display:block;aspect-ratio:4/3;overflow:hidden;padding:0;border:0;border-radius:24px;box-shadow:none}
+.cover-scene .cover-work,.cover-scene .cover-detail{position:absolute;overflow:hidden;border-radius:12px;box-shadow:0 20px 45px -15px #25234445}
+.cover-scene img{display:block;width:100%;height:auto;max-width:none;border:0;transform:none;transition:none}
+.featured .bee .cover-scene{background:linear-gradient(135deg,#fff6be 0%,#f4d267 52%,#edac89 100%)}
+.bee .cover-work{width:106%;left:12%;top:12%;transform:none}
+.featured .sw .cover-scene{background:linear-gradient(145deg,#c4e9dc 0%,#d6e7ed 48%,#ded0ef 100%)}
+.sw .cover-work{width:83%;height:70%;left:8.5%;top:12%;z-index:1}
+.sw .cover-detail{width:53%;height:42%;right:5%;bottom:-6%;z-index:2}
+.featured .saas .cover-scene{background:linear-gradient(135deg,#f9c8b0 0%,#e6bfd7 50%,#c6b9ed 100%)}
+.saas .cover-work{width:114%;height:87%;left:-8%;top:19%;transform:none}
+.saas .cover-work img{width:112%;margin-left:-6%;margin-top:-13.5%}
+.featured .crypto .cover-scene{background:linear-gradient(145deg,#cbbde9 0%,#edbfd4 50%,#f3ca97 100%)}
+.crypto .cover-work{width:122%;height:93%;left:7%;top:13%;transform:none;border-radius:20px}
+.crypto .cover-work img{width:100%}
+.featured .stenn .cover-scene{background:linear-gradient(135deg,#b7c5ef 0%,#c4b3e7 48%,#eec8ad 100%)}
+.stenn .cover-work{width:112%;right:12%;top:-7%;transform:none}
+.featured .leclick .cover-scene{background:linear-gradient(145deg,#f7dcad,#ddbb9c)}
+.leclick .cover-photo{position:absolute;width:175%;left:-37.5%;top:0;filter:brightness(.82) saturate(.7);z-index:-2}
+.leclick .cover-scene:after{content:"";position:absolute;inset:0;background:linear-gradient(145deg,#bd85572b,#f4d6a34d);z-index:-1}
+.leclick .cover-work{width:80%;height:74%;left:10%;top:17%;transform:none}
+@media(max-width:760px){
+ .featured .project .visual.cover-scene{aspect-ratio:3/4;border-radius:18px}
+ .bee .cover-work{width:155%;left:9%;top:15%}
+ .sw .cover-work{width:88%;height:72%;left:6%;top:10%}
+ .sw .cover-detail{width:70%;height:39%;right:4%;bottom:-2%}
+ .saas .cover-work{width:175%;height:83%;left:-32%;top:17%}
+ .crypto .cover-work{width:183%;height:88%;left:7%;top:9%}
+ .stenn .cover-work{width:165%;right:8%;top:12%;transform:none}
+ .leclick .cover-photo{width:300%;left:-100%}
+ .leclick .cover-work{width:134%;height:70%;left:10%;top:20%}
+}
+.stenn .cover-work{width:108%;right:auto;left:8%;top:12%;transform:none}
+@media(max-width:760px){.stenn .cover-work{width:155%;left:8%;top:12%}}
+/* Keep the frame and photo still; gently enlarge the product composition. */
+.featured .project .cover-scene img,
+.featured .project:hover .cover-scene img{transform:none;transition:none}
+.featured .project .cover-work,
+.featured .project .cover-detail{transform:scale(1);transform-origin:center;transition:transform .45s cubic-bezier(.2,.65,.3,1)}
+@media(hover:hover) and (pointer:fine){
+ .featured .project:hover .cover-work,
+ .featured .project:hover .cover-detail{transform:scale(1.03)}
+}
+@media(prefers-reduced-motion:reduce){
+ .featured .project .cover-work,
+ .featured .project .cover-detail{transition:none}
+}
+/* The same light browser chrome used by the scrollable case-study viewers. */
+.cover-browser{background:#fff;border:1px solid #d8dadf;border-radius:14px}
+.cover-browser-bar{display:flex;align-items:center;gap:8px;padding:11px 14px;background:#e9eaee;position:relative;z-index:1}
+.cover-browser-dots{display:flex;gap:7px;flex:none}
+.cover-browser-dots i{width:11px;height:11px;border-radius:50%;display:block}
+.cover-browser-dots i:nth-child(1){background:#ff5f57}
+.cover-browser-dots i:nth-child(2){background:#febc2e}
+.cover-browser-dots i:nth-child(3){background:#28c840}
+.cover-browser-url{flex:1;min-width:0;margin-left:8px;background:#fff;border-radius:7px;padding:5px 12px;font-size:13px;line-height:1.5;color:#6b7280;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border:1px solid #dfe1e6}
+.cover-browser-screen{overflow:hidden;border-top:1px solid #d8dadf}
+.bee .cover-browser-screen img{margin-top:-3.5%}
+/* Keep the calendar's complete top edge and anchor it to the right. */
+.saas .cover-work{width:103%;height:90%;left:8%;top:14%;background:transparent}
+.saas .cover-work img{width:112%;margin-left:-6%;margin-top:-10%}
+/* Retain only the phones and floating UI panels from the original artwork. */
+.crypto .cover-work{width:112%;height:auto;left:-9%;top:4%;overflow:visible;border-radius:0;box-shadow:none}
+.crypto .cover-work img{clip-path:url(#crypto-cover-cutout)}
+@media(max-width:760px){
+ .saas .cover-work{width:155%;height:87%;left:8%;top:14%}
+ .crypto .cover-work{width:155%;height:auto;left:-24%;top:8%}
+}
+.saas .cover-work img{clip-path:none}
+@media(min-width:761px){.crypto .cover-work{width:108%;left:-5%}}
+/* Larger crypto composition; the frame trims one third of the right widgets. */
+@media(min-width:761px){.crypto .cover-work{width:140.4%;left:-18.36%;top:4%}}
+@media(max-width:760px){.crypto .cover-work{width:201.5%;left:-69.86%;top:8%}}
+/* Mobile booking screen boldly overlaps the desktop map. */
+.leclick .cover-phone{width:30%;height:auto;aspect-ratio:440/900;right:4%;bottom:-7%;z-index:3;border-radius:20% / 10%;box-shadow:0 14px 30px #181b244d}
+.leclick .cover-phone img{width:363.636%;margin-left:-20%;margin-top:-34.09%;max-width:none}
+@media(max-width:760px){.leclick .cover-phone{width:48%;right:3%;bottom:-4%}}
+/* Enlarge the SW product detail by 30%, retaining its bottom-right anchor. */
+.sw .cover-detail{width:68.9%;height:54.6%}
+@media(max-width:760px){.sw .cover-detail{width:91%;height:50.7%}}
+/* Reduce the visible gap above the phone artwork by one third. */
+@media(min-width:761px){.crypto .cover-work{top:-3.605%}}
+@media(max-width:760px){.crypto .cover-work{top:.271%}}
