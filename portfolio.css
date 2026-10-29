@@ -187,3 +187,5 @@ html:not(.keyboard-navigation) .project:focus-visible{outline:none}
 /* Show a wider section of each colour instead of the full spectrum at once. */
 .page-ambient{background-size:250% 250%;background-position:50% 50%}
 .page-ambient{opacity:.34}
+
+.project.crypto .visual{aspect-ratio:4/3}
