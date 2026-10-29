@@ -201,3 +201,12 @@ html:not(.keyboard-navigation) .project:focus-visible{outline:none}
  .button:hover,.button.secondary:hover{background:linear-gradient(105deg,#8051a5 3%,#af4785 43%,#bd642d 96%);color:#fff;border-color:transparent}
  .project:hover h3{color:#777b75}
 }
+/* Fluid hero typography, with a larger mobile minimum. */
+.hero h1{line-height:1;font-size:clamp(50.16px,6.928vw,125.4px)}
+@media(max-width:760px){.hero h1{font-size:clamp(56px,14.36vw,88px)}}
+.hero h1 .hero-word{display:inline-block;min-height:1em;white-space:nowrap;vertical-align:top}
+.hero h1 .hero-word{position:relative}
+.hero-word::after{content:"";display:inline-block;width:2px;height:.82em;margin-left:.07em;vertical-align:-.02em;background:#af4785;animation:hero-caret 1s step-end infinite}
+@keyframes hero-caret{50%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.hero-word::after{display:none}}
+.project .projectmeta{margin-top:20px;margin-bottom:8px}

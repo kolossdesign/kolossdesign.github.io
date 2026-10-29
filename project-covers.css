@@ -81,3 +81,46 @@
 /* Reduce the visible gap above the phone artwork by one third. */
 @media(min-width:761px){.crypto .cover-work{top:-3.605%}}
 @media(max-width:760px){.crypto .cover-work{top:.271%}}
+/* Crop the calendar at its actual window edge, excluding the baked grey canvas. */
+.saas .cover-work{height:auto;aspect-ratio:1430/910}
+@media(max-width:760px){
+ .sw .cover-detail{width:100%;height:56%;right:-22%;bottom:-7%}
+ .saas .cover-work{height:auto;aspect-ratio:1430/910}
+}
+/* Show both mobile screens on a narrow cover instead of losing the first phone. */
+@media(max-width:760px){.crypto .cover-work{width:145%;left:-16%;top:4%}}
+/* Mobile cover: one large Cards screen, centred within the gradient. */
+@media(max-width:760px){
+ .crypto .cover-work{width:230%;left:-62.47%;top:-14.7%}
+ .crypto .cover-work img{clip-path:url(#crypto-single-phone)}
+}
+.stenn .cover-work{width:118.8%}
+@media(max-width:760px){.stenn .cover-work{width:170.5%}}
+/* Animated preview of the same long page shown inside the Beeline case. */
+.bee .cover-browser-screen{aspect-ratio:1.25;position:relative;overflow:hidden}
+.bee .cover-browser-screen img{margin:0;animation:bee-page-scroll 18s ease-in-out infinite;translate:0 0}
+@keyframes bee-page-scroll{
+ 0%,12%,100%{translate:0 0}
+ 45%,62%{translate:0 var(--bee-scroll-distance,0px)}
+}
+@media(prefers-reduced-motion:reduce){.bee .cover-browser-screen img{animation:none}}
+/* Give the Beeline hero illustration more room inside the cover. */
+.bee .cover-work{width:92%;left:8%}
+@media(max-width:760px){.bee .cover-work{width:125%;left:8%}}
+/* Scroll the viewport itself so hover transforms cannot cancel the page motion. */
+.bee .cover-browser-screen{scroll-behavior:auto;overflow:hidden}
+.bee .cover-browser-screen img{animation:none;translate:none}
+/* Desktop Beeline artwork extends beyond the frame, keeping the left inset. */
+@media(min-width:761px){.bee .cover-work{width:126%;left:8%}}
+/* The product detail is now the primary SW cover and scrolls in its own viewport. */
+.sw .cover-work{left:8.5%;top:10%;width:83%;height:90%;right:auto;bottom:auto}
+.sw .cover-preview-viewport{position:relative;width:100%;height:100%;overflow:hidden;scroll-behavior:auto;background:white}
+.sw .cover-preview-viewport img{width:100%;height:auto;margin:0}
+@media(max-width:760px){.sw .cover-work{left:7%;top:8%;width:86%;height:92%}}
+.sw .cover-work{border-radius:12px 12px 0 0}
+.leclick .cover-work{width:74%;left:13%;height:auto;aspect-ratio:1440/1000;top:50%;translate:0 -50%}
+@media(max-width:760px){.leclick .cover-work{width:84%;left:8%;height:auto;top:50%;aspect-ratio:1440/1000;translate:0 -50%}}
+.leclick .cover-work{width:111%;left:13%}
+@media(max-width:760px){.leclick .cover-work{width:126%;left:8%}}
+.leclick .cover-work{top:8.666667%;translate:none}
+@media(max-width:760px){.leclick .cover-work{top:3%;translate:none}}

@@ -1,0 +1,89 @@
+.leclick-cover-demo{position:relative;width:100%;height:100%;overflow:hidden;background:white}
+.demo__stack{position:absolute;inset:0}
+.demo__stack > img{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover}
+.demo__after{opacity:0;animation:demoAfter 16s linear infinite}
+
+/* Колонка выдачи: окно с прокруткой ленты ресторанов */
+.demo__list{position:absolute;left:20.14%;top:0;width:24.31%;height:100%;
+  overflow:hidden;opacity:0;animation:demoAfter 16s linear infinite}
+.demo__list img{position:absolute;left:0;top:0;width:100%;display:block;
+  animation:demoList 16s ease-in-out infinite}
+/* Второй слой ленты – карточка «Счастье» в нажатом состоянии, включается по клику */
+.demo__list .demo__sel{opacity:0;animation:demoList 16s ease-in-out infinite, demoSel 16s linear infinite}
+
+/* Карточка ресторана: выезжает справа от колонки и сама прокручивается */
+.demo__sheet{position:absolute;left:44.44%;top:0;width:33.33%;height:100%;
+  overflow:hidden;background:#fff;box-shadow:0 0 24px rgba(0,0,0,.18);
+  opacity:0;animation:demoSheet 16s ease-in-out infinite}
+.demo__sheet img{position:absolute;left:0;top:0;width:100%;display:block;
+  animation:demoCard 16s ease-in-out infinite}
+
+.demo__cursor{position:absolute;width:2.2%;z-index:4;left:70%;top:22%;
+  filter:drop-shadow(0 2px 4px rgba(0,0,0,.35));animation:demoCursor 16s ease-in-out infinite}
+.demo__tap{position:absolute;z-index:3;width:110px;height:110px;margin:-55px 0 0 -55px;
+  border-radius:50%;background:rgba(17,19,24,.28);border:4px solid #fff;
+  box-shadow:0 0 0 2px rgba(17,19,24,.35), 0 4px 16px rgba(0,0,0,.3);
+  opacity:0;transform:scale(.2);animation:demoTap 16s ease-out infinite}
+
+/* 0–8 курсор к полю поиска, 10 клик, 12 форма заполнена и появилась выдача,
+   16–30 лента едет вниз, 32–40 назад, 42 курсор на «Счастье», 46 клик,
+   48–54 выезжает карточка, 56–80 карточка прокручивается, 88–96 все назад. */
+@keyframes demoCursor{
+  0%,4%{left:70%;top:22%}
+  10%{left:4.5%;top:16.5%}
+  11.5%{left:4.5%;top:16.5%;transform:scale(.72)}
+  14%{left:4.5%;top:16.5%;transform:scale(1)}
+  20%{left:4.5%;top:16.5%}
+  42%{left:30%;top:60%}
+  45%{left:30%;top:60%;transform:scale(1)}
+  46.5%{left:30%;top:60%;transform:scale(.72)}
+  49%{left:30%;top:60%;transform:scale(1)}
+  86%{left:30%;top:60%}
+  100%{left:70%;top:22%}
+}
+@keyframes demoTap{
+  0%,10%{left:4.5%;top:16.5%;opacity:0;transform:scale(.15)}
+  11.5%{left:4.5%;top:16.5%;opacity:1;transform:scale(.45)}
+  18%{left:4.5%;top:16.5%;opacity:0;transform:scale(1.25)}
+  44%{left:30%;top:60%;opacity:0;transform:scale(.15)}
+  46%{left:30%;top:60%;opacity:1;transform:scale(.45)}
+  53%{left:30%;top:60%;opacity:0;transform:scale(1.25)}
+  100%{left:30%;top:60%;opacity:0;transform:scale(1.25)}
+}
+@keyframes demoAfter{
+  0%,13%{opacity:0}
+  16%,88%{opacity:1}
+  93%,100%{opacity:0}
+}
+@keyframes demoList{
+  0%,18%{transform:translateY(0)}
+  32%{transform:translateY(-42%)}
+  40%,100%{transform:translateY(0)}
+}
+/* Лента гаснет одновременно с карточкой – цикл начинается с чистого экрана */
+@keyframes demoSel{
+  0%,45.5%{opacity:0}
+  46%,88%{opacity:1}
+  92%,100%{opacity:0}
+}
+@keyframes demoSheet{
+  0%,47%{opacity:0;transform:scale(.985)}
+  52%,88%{opacity:1;transform:scale(1)}
+  93%,100%{opacity:0;transform:scale(1)}
+}
+@keyframes demoCard{
+  0%,58%{transform:translateY(0)}
+  80%,86%{transform:translateY(-34%)}
+  92%,100%{transform:translateY(0)}
+}
+@media (prefers-reduced-motion:reduce){
+  .demo__after,.demo__list,.demo__list img,.demo__sheet,.demo__sheet img,
+  .demo__cursor,.demo__tap{animation:none}
+  .demo__after,.demo__list{opacity:1}
+  .demo__sheet{opacity:1}
+  .demo__cursor,.demo__tap{display:none}
+}
+
+.leclick-cover-demo .demo__stack>img{height:100%;width:100%;object-fit:cover}
+.leclick-cover-demo .demo__list img,.leclick-cover-demo .demo__sheet img{height:auto;max-width:none;border-radius:0;box-shadow:none}
+.leclick-cover-demo .demo__tap{width:7.64%;height:auto;aspect-ratio:1;margin:0;translate:-50% -50%;border-width:2px}

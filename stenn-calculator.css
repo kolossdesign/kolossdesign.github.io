@@ -1,0 +1,33 @@
+.stenn-calc-shell{position:relative;container-type:inline-size;aspect-ratio:4/3}
+.stenn-calc-shell>img{width:100%;height:auto;display:block}
+.stenn-calculator{position:absolute;left:46.3889%;top:39.2593%;width:50.2778%;height:30.5556%;display:grid;grid-template-columns:52% 48%;border:1px solid #e4e4e4;border-radius:.55cqw;overflow:hidden;background:linear-gradient(90deg,#fff 50%,#fafafa);font-family:Arial,sans-serif;color:#3b3f3c;line-height:1.5}
+.stenn-calculator *{box-sizing:border-box}
+.stenn-calc-inputs{padding:2.5cqw 2.08cqw 0}
+.stenn-calc-results{padding:2.5cqw 2.08cqw 0}
+.stenn-calc-label{font-size:1.11cqw;color:#9b9b9b;line-height:1.5;white-space:nowrap}
+.stenn-calc-value{font-weight:600;font-size:1.8cqw;line-height:1.4;white-space:nowrap;margin-top:.5cqw;font-variant-numeric:tabular-nums;letter-spacing:-.035cqw}
+.stenn-calc-value sup{font-size:1cqw;color:#999;font-weight:400}
+.stenn-calc-track{position:relative;height:.28cqw;background:#eee;margin-top:2.2cqw;width:100%;border-radius:1cqw}
+.stenn-calc-track i{position:absolute;top:50%;left:35%;width:2.22cqw;height:2.22cqw;background:#25145a;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 .1cqw .2cqw #20144328}
+.stenn-calc-label.term-label{margin-top:2.45cqw}
+.stenn-calc-results hr{border:0;border-top:1px solid #dedede;margin:1.1cqw 0 1.4cqw}
+.stenn-calc-fee{font-size:1.8cqw;white-space:nowrap;margin-top:.3cqw;line-height:1.4;font-variant-numeric:tabular-nums;letter-spacing:-.04cqw}
+.stenn-calc-fee b{font-weight:600}.stenn-calc-fee span{color:#999;font-weight:400}
+.stenn-mobile-title{display:none}
+@media(max-width:760px){
+ .stenn .cover-work{left:7%;top:7%;width:86%;height:86%;background:white}
+ .stenn-calc-shell{height:100%;aspect-ratio:auto;background:white;border-radius:12px;overflow:hidden}
+ .stenn-calc-shell>img{display:none}
+ .stenn-mobile-title{display:block;font:600 5cqw/1.2 Arial,sans-serif;padding:6cqw 6cqw 3cqw;color:#37383b}
+ .stenn-calculator{position:relative;left:auto;top:auto;width:100%;height:auto;display:flex;flex-direction:column;border:0;border-radius:0;background:white}
+ .stenn-calc-inputs,.stenn-calc-results{padding:3cqw 6cqw 5cqw}
+ .stenn-calc-results{background:#f8f8fa;padding-top:4cqw}
+ .stenn-calc-label{font-size:3.5cqw;line-height:1.3}
+ .stenn-calc-value{font-size:6.5cqw;line-height:1.3;margin-top:1.5cqw}
+ .stenn-calc-value sup{font-size:3cqw}
+ .stenn-calc-track{height:.8cqw;margin-top:6cqw;margin-bottom:3cqw}
+ .stenn-calc-track i{width:6cqw;height:6cqw}
+ .stenn-calc-label.term-label{margin-top:6cqw}
+ .stenn-calc-results hr{margin:3cqw 0}
+ .stenn-calc-fee{font-size:5.5cqw;margin-top:1.5cqw}
+}
