@@ -55,3 +55,11 @@
 .booking-shell .booking-track{animation:none;translate:none}
 .booking-shell .booking-window{scroll-behavior:auto}
 .booking-drag-pointer{position:absolute;right:0;top:1.5cqw;translate:50% -50%;width:3cqw;aspect-ratio:1;border-radius:50%;background:#ffffff60;border:1px solid #eb647f;box-shadow:0 0 0 .45cqw #ed617326;opacity:0;z-index:8}
+/* The compact sidebar removes the original window chrome above the content. */
+@media(max-width:760px){.saas .cover-work>.booking-shell{margin-top:-12.36%}}
+/* Preserve the compact layout's inset above the rounded white workspace. */
+@media(max-width:760px){.saas .cover-work>.booking-shell{margin-top:-11.12%}}
+/* Keep the visible crop's bottom gutter equal to its native top gutter. */
+@media(max-width:760px){
+ .saas .cover-work:after{content:"";position:absolute;left:0;right:0;bottom:0;height:0;padding-top:1.236%;background:#efefef;z-index:7;pointer-events:none}
+}

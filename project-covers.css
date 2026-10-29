@@ -124,3 +124,6 @@
 @media(max-width:760px){.leclick .cover-work{width:126%;left:8%}}
 .leclick .cover-work{top:8.666667%;translate:none}
 @media(max-width:760px){.leclick .cover-work{top:3%;translate:none}}
+/* Mobile LeClick: enlarge the desktop demo and centre it within the photo. */
+@media(max-width:760px){.leclick .cover-work{width:151.2%;left:-25.6%;top:50%;translate:0 -50%}}
+@media(max-width:760px){.leclick .cover-work{left:8%}}
