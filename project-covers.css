@@ -127,3 +127,11 @@
 /* Mobile LeClick: enlarge the desktop demo and centre it within the photo. */
 @media(max-width:760px){.leclick .cover-work{width:151.2%;left:-25.6%;top:50%;translate:0 -50%}}
 @media(max-width:760px){.leclick .cover-work{left:8%}}
+/* Enlarge the SW page by 20%, keeping the left anchor and cropping at the right. */
+.sw .cover-work{width:99.6%}
+@media(max-width:760px){.sw .cover-work{width:103.2%}}
+.sw .cover-work.cover-browser{display:flex;flex-direction:column}
+.sw .cover-browser-bar{flex:none}
+.sw .cover-preview-viewport{flex:1;min-height:0;height:auto}
+.sw .cover-work{width:119.52%}
+@media(max-width:760px){.sw .cover-work{width:123.84%}}
