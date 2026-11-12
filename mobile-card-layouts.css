@@ -11,9 +11,9 @@
 @media(max-width:760px){
  #work>.sectionhead{padding-bottom:24px;margin-bottom:40px;border-bottom:0}
  #work>.sectionhead h2{font-size:40px;line-height:1.1;letter-spacing:-1.4px}
- #work>.sectionhead p{margin-top:12px;max-width:28em;font-size:14px;line-height:1.5;color:var(--muted)}
+ #work>.sectionhead p{margin-top:12px;max-width:28em;font-size:15px;line-height:1.5;color:var(--muted)}
 }
 /* Use one caption size for the section introduction and project summaries. */
 @media(max-width:760px){
- .featured .project>p.summary{font-size:14px;line-height:1.5}
+ .featured .project>p.summary{font-size:15px;line-height:1.5}
 }
