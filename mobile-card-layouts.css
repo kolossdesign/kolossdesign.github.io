@@ -1,0 +1,19 @@
+/* Mobile project cards: keep each caption together above its artwork. */
+@media(max-width:760px){
+ .featured .project{display:flex;flex-direction:column}
+ .featured .project>.projectmeta{order:0;margin:0 0 8px}
+ .featured .project>h3{order:1;margin:0 0 8px}
+ .featured .project>.summary{order:2;margin:0 0 22px}
+ .featured .project>.visual{order:3;flex:none}
+ .featured{row-gap:80px}
+}
+/* Separate the section introduction from the first project caption. */
+@media(max-width:760px){
+ #work>.sectionhead{padding-bottom:24px;margin-bottom:40px;border-bottom:0}
+ #work>.sectionhead h2{font-size:40px;line-height:1.1;letter-spacing:-1.4px}
+ #work>.sectionhead p{margin-top:12px;max-width:28em;font-size:14px;line-height:1.5;color:var(--muted)}
+}
+/* Use one caption size for the section introduction and project summaries. */
+@media(max-width:760px){
+ .featured .project>p.summary{font-size:14px;line-height:1.5}
+}
